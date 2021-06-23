@@ -1,6 +1,6 @@
 ﻿using OpenQA.Selenium;
 
-namespace GitHubProject
+namespace GitHub.pages.GitHubPages
 {
     class NewIssuePage : IssuesTabPage
     {

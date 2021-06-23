@@ -1,9 +1,7 @@
-﻿using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using GitHub.config;
+using OpenQA.Selenium;
 
-namespace GitHubProject
+namespace GitHub.pages.GitHubPages
 {
     class IntroductionPage : BasePage
     {

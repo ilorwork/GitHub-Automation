@@ -1,19 +1,19 @@
-﻿using OpenQA.Selenium;
+﻿using System;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
-using System;
 
-namespace GitHubProject
+namespace GitHub.config
 {
     public class BasePage : AutomationConfig
     {
 
-        public void click(By by)
+        public void Click(By by)
         {
             IWebElement element = null;
             try
             {
-                wait.Until(ExpectedConditions.ElementIsVisible(by));
-                element = wait.Until(ExpectedConditions.ElementToBeClickable(driver.FindElement(by)));
+                Wait.Until(ExpectedConditions.ElementIsVisible(by));
+                element = Wait.Until(ExpectedConditions.ElementToBeClickable(Driver.FindElement(by)));
                 element.Click();
             }
             catch (Exception e)
@@ -23,13 +23,13 @@ namespace GitHubProject
             }
         }
 
-        public void sendKeys(By by, String text)
+        public void SendKeys(By by, string text)
         {
             IWebElement element = null;
             try
             {
-                this.click(by);
-                element = driver.FindElement(by);
+                this.Click(by);
+                element = Driver.FindElement(by);
                 element.Clear();
                 element.SendKeys(text);
             }
