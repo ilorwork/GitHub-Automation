@@ -1,7 +1,7 @@
-﻿using OpenQA.Selenium;
-using System.Threading;
+﻿using GitHub.config;
+using OpenQA.Selenium;
 
-namespace GitHubProject
+namespace GitHub.pages.GitHubPages
 {
     class LoginPage : BasePage
     {
@@ -17,9 +17,9 @@ namespace GitHubProject
         }
         public void Signin(string userName, string password)
         {
-            sendKeys(UserNameField, userName);
-            sendKeys(PasswordField, password);
-            click(SignInBtn);
+            SendKeys(UserNameField, userName);
+            SendKeys(PasswordField, password);
+            Click(SignInBtn);
         }
         public By UserNameField { get => userNameField; set => userNameField = value; }
         public By PasswordField { get => passwordField; set => passwordField = value; }

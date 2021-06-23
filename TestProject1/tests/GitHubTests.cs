@@ -1,7 +1,8 @@
+using GitHub.config;
+using GitHub.pages.GitHubPages;
 using NUnit.Framework;
-using System.Threading;
 
-namespace GitHubProject
+namespace GitHub.tests
 {
     [TestFixture]
     public class GitHubTests : BasePage
@@ -23,39 +24,44 @@ namespace GitHubProject
         [OneTimeSetUp]
         public void OneTimeSetUp()
         {
-            driver.Url = "https://github.com";
-            driver.Manage().Window.Maximize();
+            Driver.Url = "https://github.com";
+            Driver.Manage().Window.Maximize();
         }
+
         [OneTimeTearDown]
         public void OneTimeTearDown()
         {
-            driver.Quit();
+            Driver.Quit();
         }
 
         [Test, Order(1)]
+        [Category(Categories.Login), Category(Categories.SanityTest), Category(Categories.RegressionTest)]
+        //[Retry (2)]
         public void Test01_SingIn()
         {
-            click(intro.SignInBtn);
+            Click(intro.SignInBtn);
             login.Signin(userName, password);
         }
+
         [Test, Order(2)]
         public void Test02_CreateRep()
         {
-            click(home.NewMenuBtn);
-            click(home.NewRepBtn);
+            Click(home.NewMenuBtn);
+            Click(home.NewRepBtn);
 
-            sendKeys(newRep.RepNameField, repName);
-            sendKeys(newRep.DescriptionField, repDescription);
-            click(newRep.CreateRepBtn);
+            SendKeys(newRep.RepNameField, repName);
+            SendKeys(newRep.DescriptionField, repDescription);
+            Click(newRep.CreateRepBtn);
         }
+
         [Test, Order(3)]
         public void Test03_CreateIssue() 
         { 
-            click(repHome.IssuesTab);
-            click(issuesTab.NewIssueBtn);
-            sendKeys(newIssue.TitleField, issueTitle);
-            sendKeys(newIssue.BodyField, IssueBody);
-            click(newIssue.SubmitBtn);
+            Click(repHome.IssuesTab);
+            Click(issuesTab.NewIssueBtn);
+            SendKeys(newIssue.TitleField, issueTitle);
+            SendKeys(newIssue.BodyField, IssueBody);
+            Click(newIssue.SubmitBtn);
         }
     }
 }

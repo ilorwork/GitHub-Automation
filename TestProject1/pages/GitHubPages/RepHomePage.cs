@@ -1,6 +1,7 @@
-﻿using OpenQA.Selenium;
+﻿using GitHub.config;
+using OpenQA.Selenium;
 
-namespace GitHubProject
+namespace GitHub.pages.GitHubPages
 {
     class RepHomePage : BasePage
     {
