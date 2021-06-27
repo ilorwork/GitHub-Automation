@@ -12,11 +12,14 @@ namespace GitHub.pages.GitHubPages
         {
             this.titleField = By.Id("issue_title");
             this.bodyField = By.Id("issue_body");
-            this.submitBtn = By.XPath("//button[@class = 'btn btn-primary']");
+            this.submitBtn = By.CssSelector("[data-view-component='true'].btn-primary.btn");
         }
 
-        public By TitleField { get => titleField; set => titleField = value; }
-        public By BodyField { get => bodyField; set => bodyField = value; }
-        public By SubmitBtn { get => submitBtn; set => submitBtn = value; }
+        public void CreateNewIssue(string issueTitle, string IssueBody)
+        {
+            SendKeys(titleField, issueTitle);
+            SendKeys(bodyField, IssueBody);
+            Click(submitBtn);
+        }
     }
 }

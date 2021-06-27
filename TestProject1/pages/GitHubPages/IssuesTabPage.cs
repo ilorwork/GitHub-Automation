@@ -10,6 +10,11 @@ namespace GitHub.pages.GitHubPages
         {
             this.newIssueBtn = By.XPath("//span[contains(text(),'New issue')]");
         }
-        public By NewIssueBtn { get => newIssueBtn; set => newIssueBtn = value; }
+
+        public NewIssuePage NewIssue()
+        {
+            Click(newIssueBtn);
+            return new NewIssuePage();
+        }
     }
 }

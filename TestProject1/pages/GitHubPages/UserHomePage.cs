@@ -1,20 +1,35 @@
-﻿using GitHub.config;
+﻿using System.ComponentModel;
 using OpenQA.Selenium;
+using ExpectedConditions = SeleniumExtras.WaitHelpers.ExpectedConditions;
 
 namespace GitHub.pages.GitHubPages
 {
-    class UserHomePage : BasePage
+    class UserHomePage : GitHubPage
     {
         private By newMenuBtn;
-        private By newRepBtn;
+        private By newDropDownOptions;
 
         public UserHomePage ()
         {
-            this.NewMenuBtn = By.CssSelector("summary[aria-label = 'Create new…']");
-            this.NewRepBtn = By.CssSelector("[role = 'menuitem'][href = '/new']");
+            this.newMenuBtn = By.CssSelector("summary[aria-label = 'Create new…']");
+            this.newDropDownOptions = By.XPath("//*[@href='/new']/parent::details-menu/a");
         }
 
-        public By NewMenuBtn { get => newMenuBtn; set => newMenuBtn = value; }
-        public By NewRepBtn { get => newRepBtn; set => newRepBtn = value; }
+        public UserHomePage OpenNewMenu()
+        {
+            Click(newMenuBtn);
+            return this;
+        }
+        public void ChooseOptionFromNewMenu(NewMenuOptions newMenuOptions)
+        {
+            // TODO: return corresponding pages
+            ClickOnOptionUsingEnum(FindElements(newDropDownOptions), newMenuOptions);
+        }
+        
+        public enum NewMenuOptions
+        {
+            [Description("New repository")]
+            NewRepository,
+        }
     }
 }
