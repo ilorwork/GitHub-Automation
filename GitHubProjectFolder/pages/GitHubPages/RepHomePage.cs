@@ -13,7 +13,7 @@ namespace GitHub.pages.GitHubPages
             this.repHomePageTabs = By.CssSelector(".UnderlineNav-body li [data-content]");
         }
 
-        public GitHubPage SwitchToTab(RepHomePageTabs tabName)
+        private GitHubPage SwitchToTab(RepHomePageTabs tabName)
         {
             ClickOnOptionUsingEnum(FindElements(repHomePageTabs), tabName);
             switch (tabName)
@@ -23,6 +23,10 @@ namespace GitHub.pages.GitHubPages
                 default:
                     throw new Exception($"could not return any page for this option: {tabName}");
             }
+        }
+        public IssuesTabPage SwitchToIssuesTab()
+        {
+            return (IssuesTabPage)SwitchToTab(RepHomePageTabs.Issues);
         }
         public enum RepHomePageTabs
         {

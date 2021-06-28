@@ -1,6 +1,6 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using OpenQA.Selenium;
-using ExpectedConditions = SeleniumExtras.WaitHelpers.ExpectedConditions;
 
 namespace GitHub.pages.GitHubPages
 {
@@ -20,10 +20,23 @@ namespace GitHub.pages.GitHubPages
             Click(newMenuBtn);
             return this;
         }
-        public void ChooseOptionFromNewMenu(NewMenuOptions newMenuOptions)
+        private GitHubPage ChooseOptionFromNewMenu(NewMenuOptions newMenuOptions)
         {
             // TODO: return corresponding pages
             ClickOnOptionUsingEnum(FindElements(newDropDownOptions), newMenuOptions);
+
+            switch (newMenuOptions)
+            {
+                case NewMenuOptions.NewRepository:
+                    return new NewRepPage();
+                default:
+                    throw new Exception($"could not return any page for this option: {newMenuOptions}");
+            }
+            //TODO: check maybe using ByAll method for the return type here
+        }
+        public NewRepPage ChooseNewRepOption()
+        {
+            return (NewRepPage)ChooseOptionFromNewMenu(NewMenuOptions.NewRepository);
         }
         
         public enum NewMenuOptions
