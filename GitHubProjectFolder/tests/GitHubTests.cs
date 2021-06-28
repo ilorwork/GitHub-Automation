@@ -10,7 +10,7 @@ namespace GitHub.tests
         //[Repeat(2)]
         [Test, Order(1)]
         [Category(Categories.Login), Category(Categories.SanityTest), Category(Categories.RegressionTest)]
-        [TestCase("etoropos", "Etoro132")]
+        [TestCase("githubcsharptest", "githubcsharp123")]
         //TODO: Add- DTD for login test
         //TODO: BUG- fix gmail autorization
         public void SingIn(string userName, string password)
@@ -37,8 +37,8 @@ namespace GitHub.tests
             //LoginPage login = new LoginPage();
             //UserHomePage home = new UserHomePage();
             NewRepPage newRep = new NewRepPage();
-            string userName = "etoropos";
-            string password = "Etoro132";
+            string userName = "githubcsharptest";
+            string password = "githubcsharp123";
             string repName = $"rep no {ExtensionsMethods.CreateRandomNumber()}";
             string repDescription = $"{repName} Description";
             #endregion
@@ -68,8 +68,8 @@ namespace GitHub.tests
             RepHomePage repHome = new RepHomePage();
             //IssuesTabPage issuesTab = new IssuesTabPage();
             NewIssuePage newIssue = new NewIssuePage();
-            string userName = "etoropos";
-            string password = "Etoro132";
+            string userName = "githubcsharptest";
+            string password = "githubcsharp123";
             string repName = $"rep no {ExtensionsMethods.CreateRandomNumber()}";
             string repDescription = $"{repName} Description";
             string issueTitle = "Why?";
