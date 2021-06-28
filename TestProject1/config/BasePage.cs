@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Reflection;
+using GitHub.helpers;
 using OpenQA.Selenium;
 using ExpectedConditions = SeleniumExtras.WaitHelpers.ExpectedConditions;
 
@@ -67,7 +66,7 @@ namespace GitHub.config
             bool elementFound = false;
             foreach (var webElement in listOfOptions)
             {
-                string enumOptionDescription = GetDescription(option);
+                string enumOptionDescription = ExtensionsMethods.GetDescription(option);
                 if (!webElement.Text.Equals(enumOptionDescription)) continue;
                 Click(webElement);
                 elementFound = true;
@@ -77,16 +76,6 @@ namespace GitHub.config
             {
                 throw new Exception("Could not find any element to click on!");
             }
-        }
-        private string GetDescription(Enum value)
-        {
-            // Get the Description attribute value for the ENUM
-            FieldInfo fi = value.GetType().GetField(value.ToString());//gets ENUM value
-            DescriptionAttribute[] attributes =
-                (DescriptionAttribute[])fi.GetCustomAttributes(
-                    typeof(DescriptionAttribute), false);//gets the description annotations inside the ENUM 
-
-            return attributes.Length > 0 ? attributes[0].Description : value.ToString();
         }
     }
 }
