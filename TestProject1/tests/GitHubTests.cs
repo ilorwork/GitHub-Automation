@@ -1,67 +1,96 @@
 using GitHub.config;
 using GitHub.pages.GitHubPages;
 using NUnit.Framework;
-
+using GitHub.helpers;
 namespace GitHub.tests
 {
     [TestFixture]
-    public class GitHubTests : BasePage
+    public class GitHubTests : BaseTest
     {
-        string userName = "etoropos";
-        string password = "Etoro132";
-        string repName = "fdsa13252";
-        string repDescription = "Because";
-        string issueTitle = "Why?";
-        string IssueBody = "Because";
-        IntroductionPage intro = new IntroductionPage();
-        LoginPage login = new LoginPage();
-        UserHomePage home = new UserHomePage();
-        NewRepPage newRep = new NewRepPage();
-        RepHomePage repHome = new RepHomePage();
-        IssuesTabPage issuesTab = new IssuesTabPage();
-        NewIssuePage newIssue = new NewIssuePage();
-
-        [OneTimeSetUp]
-        public void OneTimeSetUp()
-        {
-            Driver.Url = "https://github.com";
-            Driver.Manage().Window.Maximize();
-        }
-
-        [OneTimeTearDown]
-        public void OneTimeTearDown()
-        {
-            Driver.Quit();
-        }
-
+        //[Repeat(2)]
         [Test, Order(1)]
         [Category(Categories.Login), Category(Categories.SanityTest), Category(Categories.RegressionTest)]
-        //[Retry (2)]
-        public void Test01_SingIn()
+        [TestCase("etoropos", "Etoro132")]
+        //TODO: Add- DTD for login test
+        //TODO: BUG- fix gmail autorization
+        public void SingIn(string userName, string password)
         {
-            Click(intro.SignInBtn);
-            login.Signin(userName, password);
+            #region
+            IntroductionPage intro = new IntroductionPage();
+            #endregion
+            TestRunner(() =>
+            {
+                intro.ClickLogin()
+                    .Signin(userName, password);
+                //wait until homepage is show
+                //TODO: Assert here
+            });
         }
 
         [Test, Order(2)]
-        public void Test02_CreateRep()
+        [Category(Categories.SanityTest), Category(Categories.RegressionTest)]
+        //TODO: Add- DTD for createRep test
+        public void CreateRep()
         {
-            Click(home.NewMenuBtn);
-            Click(home.NewRepBtn);
+            #region
+            IntroductionPage intro = new IntroductionPage();
+            //LoginPage login = new LoginPage();
+            //UserHomePage home = new UserHomePage();
+            NewRepPage newRep = new NewRepPage();
+            string userName = "etoropos";
+            string password = "Etoro132";
+            string repName = $"rep no {ExtensionsMethods.CreateRandomNumber()}";
+            string repDescription = $"{repName} Description";
+            #endregion
+            TestRunner(() =>
+            {
+                intro.ClickLogin()
+                    .Signin(userName, password)
+                    .OpenNewMenu()
+                    .ChooseOptionFromNewMenu(UserHomePage.NewMenuOptions.NewRepository);
 
-            SendKeys(newRep.RepNameField, repName);
-            SendKeys(newRep.DescriptionField, repDescription);
-            Click(newRep.CreateRepBtn);
+                newRep.CreateNewRep(repName, repDescription);
+                //TODO: Assert here
+            });
         }
 
         [Test, Order(3)]
-        public void Test03_CreateIssue() 
-        { 
-            Click(repHome.IssuesTab);
-            Click(issuesTab.NewIssueBtn);
-            SendKeys(newIssue.TitleField, issueTitle);
-            SendKeys(newIssue.BodyField, IssueBody);
-            Click(newIssue.SubmitBtn);
+        [Category(Categories.SanityTest), Category(Categories.RegressionTest)]
+        //TODO: Add- DTD for createRep test
+        //TODO: optional bug - rep name already exist.
+        public void CreateIssue()
+        {
+            #region
+            IntroductionPage intro = new IntroductionPage();
+            //LoginPage login = new LoginPage();
+            UserHomePage home = new UserHomePage();
+            NewRepPage newRep = new NewRepPage();
+            RepHomePage repHome = new RepHomePage();
+            //IssuesTabPage issuesTab = new IssuesTabPage();
+            NewIssuePage newIssue = new NewIssuePage();
+            string userName = "etoropos";
+            string password = "Etoro132";
+            string repName = $"rep no {ExtensionsMethods.CreateRandomNumber()}";
+            string repDescription = $"{repName} Description";
+            string issueTitle = "Why?";
+            string IssueBody = "Because";
+            #endregion
+            TestRunner(() =>
+            {
+                intro.ClickLogin()
+                    .Signin(userName, password)
+                    .OpenNewMenu()
+                    .ChooseOptionFromNewMenu(UserHomePage.NewMenuOptions.NewRepository);
+
+                newRep.CreateNewRep(repName, repDescription);
+                //TODO: Assert here
+
+                var issuesTab = (IssuesTabPage)repHome.SwitchToTab(RepHomePage.RepHomePageTabs.Issues);
+                issuesTab.NewIssue();
+                
+                newIssue.CreateNewIssue(issueTitle, IssueBody);
+                //TODO: Assert here
+            });
         }
     }
 }

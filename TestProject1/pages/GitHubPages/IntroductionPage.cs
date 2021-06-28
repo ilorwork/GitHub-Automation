@@ -1,9 +1,8 @@
-﻿using GitHub.config;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 
 namespace GitHub.pages.GitHubPages
 {
-    class IntroductionPage : BasePage
+    class IntroductionPage : GitHubPage
     {
         private By signInBtn;
         public IntroductionPage ()
@@ -11,6 +10,10 @@ namespace GitHub.pages.GitHubPages
             this.signInBtn = By.CssSelector("[href = '/login']");
         }
 
-        public By SignInBtn { get => signInBtn; set => signInBtn = value; }
+        public LoginPage ClickLogin()
+        {
+            Click(signInBtn);
+            return new LoginPage();
+        }
     }
 }

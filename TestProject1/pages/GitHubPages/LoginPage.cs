@@ -1,9 +1,8 @@
-﻿using GitHub.config;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 
 namespace GitHub.pages.GitHubPages
 {
-    class LoginPage : BasePage
+    class LoginPage : GitHubPage
     {
         private By userNameField;
         private By passwordField;
@@ -11,18 +10,16 @@ namespace GitHub.pages.GitHubPages
 
         public LoginPage ()
         {
-            this.UserNameField = By.Id("login_field");
-            this.PasswordField = By.Id("password");
-            this.SignInBtn = By.CssSelector("#login [type='submit']");
+            this.userNameField = By.Id("login_field");
+            this.passwordField = By.Id("password");
+            this.signInBtn = By.CssSelector("#login [type='submit']");
         }
-        public void Signin(string userName, string password)
+        public UserHomePage Signin(string userName, string password)
         {
-            SendKeys(UserNameField, userName);
-            SendKeys(PasswordField, password);
-            Click(SignInBtn);
+            SendKeys(userNameField, userName);
+            SendKeys(passwordField, password);
+            Click(signInBtn);
+            return new UserHomePage();
         }
-        public By UserNameField { get => userNameField; set => userNameField = value; }
-        public By PasswordField { get => passwordField; set => passwordField = value; }
-        public By SignInBtn { get => signInBtn; set => signInBtn = value; }
     }
 }

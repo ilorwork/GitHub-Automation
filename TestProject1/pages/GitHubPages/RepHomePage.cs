@@ -1,16 +1,33 @@
-﻿using GitHub.config;
+﻿using System;
+using System.ComponentModel;
 using OpenQA.Selenium;
 
 namespace GitHub.pages.GitHubPages
 {
-    class RepHomePage : BasePage
+    class RepHomePage : GitHubPage
     {
-        private By issuesTab;
+        private By repHomePageTabs;
 
         public RepHomePage ()
         {
-            this.issuesTab = By.XPath("//span[contains(text(),'Issues')]");
+            this.repHomePageTabs = By.CssSelector(".UnderlineNav-body li [data-content]");
         }
-        public By IssuesTab { get => issuesTab; set => issuesTab = value; }
+
+        public GitHubPage SwitchToTab(RepHomePageTabs tabName)
+        {
+            ClickOnOptionUsingEnum(FindElements(repHomePageTabs), tabName);
+            switch (tabName)
+            {
+                case RepHomePageTabs.Issues:
+                    return new IssuesTabPage();
+                default:
+                    throw new Exception($"could not return any page for this option: {tabName}");
+            }
+        }
+        public enum RepHomePageTabs
+        {
+            [Description("Issues")]
+            Issues,
+        }
     }
 }
