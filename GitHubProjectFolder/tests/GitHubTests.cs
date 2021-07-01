@@ -34,9 +34,7 @@ namespace GitHub.tests
         {
             #region
             IntroductionPage intro = new IntroductionPage();
-            //LoginPage login = new LoginPage();
-            //UserHomePage home = new UserHomePage();
-            NewRepPage newRep = new NewRepPage();
+            
             string userName = "githubcsharptest";
             string password = "githubcsharp123";
             string repName = $"rep no {ExtensionsMethods.CreateRandomNumber()}";
@@ -44,10 +42,10 @@ namespace GitHub.tests
             #endregion
             TestRunner(() =>
             {
-                intro.ClickLogin()
+                var newRep = intro.ClickLogin()
                     .Signin(userName, password)
                     .OpenNewMenu()
-                    .ChooseOptionFromNewMenu(UserHomePage.NewMenuOptions.NewRepository);
+                    .ChooseNewRepOption();
 
                 newRep.CreateNewRep(repName, repDescription);
                 //TODO: Assert here
@@ -62,12 +60,7 @@ namespace GitHub.tests
         {
             #region
             IntroductionPage intro = new IntroductionPage();
-            //LoginPage login = new LoginPage();
-            UserHomePage home = new UserHomePage();
-            NewRepPage newRep = new NewRepPage();
-            RepHomePage repHome = new RepHomePage();
-            //IssuesTabPage issuesTab = new IssuesTabPage();
-            NewIssuePage newIssue = new NewIssuePage();
+            
             string userName = "githubcsharptest";
             string password = "githubcsharp123";
             string repName = $"rep no {ExtensionsMethods.CreateRandomNumber()}";
@@ -77,16 +70,16 @@ namespace GitHub.tests
             #endregion
             TestRunner(() =>
             {
-                intro.ClickLogin()
+                var newRep = intro.ClickLogin()
                     .Signin(userName, password)
                     .OpenNewMenu()
-                    .ChooseOptionFromNewMenu(UserHomePage.NewMenuOptions.NewRepository);
+                    .ChooseNewRepOption();
 
-                newRep.CreateNewRep(repName, repDescription);
+                var repHome = newRep.CreateNewRep(repName, repDescription);
                 //TODO: Assert here
 
-                var issuesTab = (IssuesTabPage)repHome.SwitchToTab(RepHomePage.RepHomePageTabs.Issues);
-                issuesTab.NewIssue();
+                var issuesTab = repHome.SwitchToIssuesTab();
+                var newIssue = issuesTab.NewIssue();
                 
                 newIssue.CreateNewIssue(issueTitle, IssueBody);
                 //TODO: Assert here

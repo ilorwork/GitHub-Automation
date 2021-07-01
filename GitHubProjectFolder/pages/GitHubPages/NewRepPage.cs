@@ -3,7 +3,7 @@ using OpenQA.Selenium;
 
 namespace GitHub.pages.GitHubPages
 {
-    class NewRepPage : BasePage
+    class NewRepPage : GitHubPage
     {
         private By repNameField;
         private By descriptionField;
@@ -16,12 +16,12 @@ namespace GitHub.pages.GitHubPages
             this.createRepBtn = By.XPath("//button[contains(text(),'Create repository')]");
         }
 
-        public NewRepPage CreateNewRep(string repName, string repDescription)
+        public RepHomePage CreateNewRep(string repName, string repDescription)
         {
             SendKeys(repNameField, repName);
             SendKeys(descriptionField, repDescription);
             Click(createRepBtn);
-            return this;
+            return new RepHomePage();
         }
     }
 }
