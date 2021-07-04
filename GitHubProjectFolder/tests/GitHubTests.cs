@@ -29,14 +29,12 @@ namespace GitHub.tests
 
         [Test, Order(2)]
         [Category(Categories.SanityTest), Category(Categories.RegressionTest)]
+        [TestCase("githubcsharptest", "githubcsharp123")]
         //TODO: Add- DTD for createRep test
-        public void CreateRep()
+        public void CreateRep(string userName, string password)
         {
             #region
             IntroductionPage intro = new IntroductionPage();
-            
-            string userName = "githubcsharptest";
-            string password = "githubcsharp123";
             string repName = $"rep no {ExtensionsMethods.CreateRandomNumber()}";
             string repDescription = $"{repName} Description";
             #endregion
