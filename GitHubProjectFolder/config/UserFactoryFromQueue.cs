@@ -12,18 +12,7 @@ namespace GitHub.config
     {
         public enum UserType
         {
-            Level0,
-            Level1,
-            Level2,
-            Level3,
-            Chinese,
-            USA,
-            TwoFAUser,
-            OptInUser,
-            Suggest2FAVerifiedUser,
-            Suggest2FAUnVerifiedUser,
-            Insist2FAUser,
-            Moderator
+            Regular
         }
 
         public enum SSOUserType

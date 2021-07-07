@@ -59,8 +59,8 @@ namespace GitHub.tests
             #region
             IntroductionPage intro = new IntroductionPage();
             
-            string userName = "githubcsharptest";
-            string password = "githubcsharp123";
+            // string userName = "githubcsharptest";
+            // string password = "githubcsharp123";
             string repName = $"rep no {ExtensionsMethods.CreateRandomNumber()}";
             string repDescription = $"{repName} Description";
             string issueTitle = "Why?";
@@ -68,8 +68,9 @@ namespace GitHub.tests
             #endregion
             TestRunner(() =>
             {
+                var user = GetUser();
                 var newRep = intro.ClickLogin()
-                    .Signin(userName, password)
+                    .Signin(user.UserName, user.Password)
                     .OpenNewMenu()
                     .ChooseNewRepOption();
 

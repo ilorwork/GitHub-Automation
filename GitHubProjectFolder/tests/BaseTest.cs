@@ -5,7 +5,7 @@ using NUnit.Framework;
 namespace GitHub.tests
 {
     [TestFixture]
-    public class BaseTest : BasePage
+    public class BaseTest : WorkFlows
     {
         private readonly string url = "https://github.com";
 
