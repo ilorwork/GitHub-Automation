@@ -12,14 +12,17 @@ namespace GitHub.tests
         [OneTimeSetUp]
         public void OneTimeSetUp()
         {
+            Log($"*** Test started: {TestContext.CurrentContext.Test.Name} ***");
             Driver.Url = url;
             Driver.Manage().Window.Maximize();
+            Log($"Navigate to: {url}");
         }
 
         [OneTimeTearDown]
         public void OneTimeTearDown()
         {
             Driver.Quit();
+            Log($"### Test Ended: {TestContext.CurrentContext.Test.Name} ###");
         }
 
         public void TestRunner(Action test)
@@ -30,6 +33,7 @@ namespace GitHub.tests
             }
             catch (Exception e)
             {
+                Log($"Test Failed: {e}");
                 Assert.Fail(e.ToString());
             }
         }

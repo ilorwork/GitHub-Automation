@@ -18,9 +18,9 @@ namespace GitHub.pages.GitHubPages
 
         public RepHomePage CreateNewRep(string repName, string repDescription)
         {
-            SendKeys(repNameField, repName);
-            SendKeys(descriptionField, repDescription);
-            Click(createRepBtn);
+            SendKeys(repNameField, repName, "Repository name");
+            SendKeys(descriptionField, repDescription, "Repository description");
+            Click(createRepBtn, "Create repository button");
             return new RepHomePage();
         }
     }

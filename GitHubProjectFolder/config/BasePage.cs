@@ -17,7 +17,7 @@ namespace GitHub.config
                 Wait.Until(ExpectedConditions.ElementIsVisible(by));
                 element = Wait.Until(ExpectedConditions.ElementToBeClickable(Driver.FindElement(by)));
                 element.Click();
-                LocalLogger.Log($"Click on {description}");
+                Log($"Click on {description}");
             }
             catch (Exception e)
             {
@@ -31,12 +31,12 @@ namespace GitHub.config
             {
                 element = Wait.Until(ExpectedConditions.ElementToBeClickable(element));
                 element.Click();
-                LocalLogger.Log($"Click on {description}");
+                Log($"Click on {description}");
             }
             catch (Exception e)
             {
                 Console.WriteLine("{0} Exception caught.", e);
-                LocalLogger.Log($"Click on {description} has failed: {e}");
+                Log($"Click on {description} has failed: {e}");
                 throw new Exception("Click element: " + element + " has failed! exception: ", e);
             }
         }
@@ -46,16 +46,16 @@ namespace GitHub.config
             IWebElement element = null;
             try
             {
-                this.Click(by);
+                this.Click(by , description);
                 element = Driver.FindElement(by);
                 element.Clear();
                 element.SendKeys(text);
-                LocalLogger.Log($"Send: {text} To: {description}");
+                Log($"Send: {text} To: {description}");
             }
             catch (Exception e)
             {
                 Console.WriteLine("{0} Exception caught.", e);
-                LocalLogger.Log($"Click on {description} has failed: {e}");
+                Log($"Send-Keys to: {description} has failed: {e}");
                 throw new Exception("Send keys to element: " + element + " has failed! exception: ", e);
             }
         }
@@ -73,7 +73,7 @@ namespace GitHub.config
             {
                 string enumOptionDescription = ExtensionsMethods.GetDescription(option);
                 if (!webElement.Text.Equals(enumOptionDescription)) continue;
-                Click(webElement);
+                Click(webElement, enumOptionDescription);
                 elementFound = true;
                 break;
             }

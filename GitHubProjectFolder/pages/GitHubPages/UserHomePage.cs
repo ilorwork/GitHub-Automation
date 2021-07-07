@@ -17,7 +17,7 @@ namespace GitHub.pages.GitHubPages
 
         public UserHomePage OpenNewMenu()
         {
-            Click(newMenuBtn);
+            Click(newMenuBtn, "New menu button");
             return this;
         }
         private GitHubPage ChooseOptionFromNewMenu(NewMenuOptions newMenuOptions)
