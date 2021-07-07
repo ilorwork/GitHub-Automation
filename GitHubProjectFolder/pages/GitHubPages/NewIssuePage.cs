@@ -17,9 +17,9 @@ namespace GitHub.pages.GitHubPages
 
         public void CreateNewIssue(string issueTitle, string IssueBody)
         {
-            SendKeys(titleField, issueTitle);
-            SendKeys(bodyField, IssueBody);
-            Click(submitBtn);
+            SendKeys(titleField, issueTitle, "Issue title");
+            SendKeys(bodyField, IssueBody, "Issue body");
+            Click(submitBtn, "Submit button");
         }
     }
 }
