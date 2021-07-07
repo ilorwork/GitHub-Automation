@@ -4,7 +4,7 @@ namespace GitHub.pages.GitHubPages
 {
     class IntroductionPage : GitHubPage
     {
-        private By signInBtn;
+        private readonly By signInBtn;
         public IntroductionPage ()
         {
             this.signInBtn = By.CssSelector("[href = '/login']");

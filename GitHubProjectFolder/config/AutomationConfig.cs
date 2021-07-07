@@ -8,13 +8,10 @@ namespace GitHub.config
 {
     public class AutomationConfig
     {
-        /*
-         * public const int DefaultTimeout = 30;
-         * public const int DefaultTimeoutForLongWaits = 60;
-         */
+        public const int DefaultTimeout = 30;
+        public const int DefaultTimeoutForLongWaits = 60;
         public static IWebDriver Driver = new ChromeDriver();
-        // remove this static
-        public static WebDriverWait Wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(30));
+        public WebDriverWait Wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(DefaultTimeout));
 
         public void Log(string info)
         {

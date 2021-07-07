@@ -6,7 +6,7 @@ namespace GitHub.pages.GitHubPages
 {
     class RepHomePage : GitHubPage
     {
-        private By repHomePageTabs;
+        private readonly By repHomePageTabs;
 
         public RepHomePage ()
         {
