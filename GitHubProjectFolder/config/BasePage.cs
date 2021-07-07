@@ -9,7 +9,7 @@ namespace GitHub.config
     public class BasePage : AutomationConfig
     {
 
-        public void Click(By by)
+        public void Click(By by, string description = null)
         {
             IWebElement element = null;
             try
@@ -17,6 +17,7 @@ namespace GitHub.config
                 Wait.Until(ExpectedConditions.ElementIsVisible(by));
                 element = Wait.Until(ExpectedConditions.ElementToBeClickable(Driver.FindElement(by)));
                 element.Click();
+                LocalLogger.Log($"Click on {description}");
             }
             catch (Exception e)
             {
@@ -24,21 +25,23 @@ namespace GitHub.config
                 throw new Exception("Click element: " + element + " has failed! exception: ", e);
             }
         }
-        public void Click(IWebElement element)
+        public void Click(IWebElement element, string description = null)
         {
             try
             {
                 element = Wait.Until(ExpectedConditions.ElementToBeClickable(element));
                 element.Click();
+                LocalLogger.Log($"Click on {description}");
             }
             catch (Exception e)
             {
                 Console.WriteLine("{0} Exception caught.", e);
+                LocalLogger.Log($"Click on {description} has failed: {e}");
                 throw new Exception("Click element: " + element + " has failed! exception: ", e);
             }
         }
 
-        public void SendKeys(By by, string text)
+        public void SendKeys(By by, string text, string description = null)
         {
             IWebElement element = null;
             try
@@ -47,10 +50,12 @@ namespace GitHub.config
                 element = Driver.FindElement(by);
                 element.Clear();
                 element.SendKeys(text);
+                LocalLogger.Log($"Send: {text} To: {description}");
             }
             catch (Exception e)
             {
                 Console.WriteLine("{0} Exception caught.", e);
+                LocalLogger.Log($"Click on {description} has failed: {e}");
                 throw new Exception("Send keys to element: " + element + " has failed! exception: ", e);
             }
         }
