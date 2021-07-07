@@ -7,15 +7,15 @@ namespace GitHub.tests
     [TestFixture]
     public class BaseTest : BasePage
     {
-        private readonly string url = "https://github.com";
+        private const string GitHubUrl = "https://github.com";
 
         [OneTimeSetUp]
         public void OneTimeSetUp()
         {
             Log($"*** Test started: {TestContext.CurrentContext.Test.Name} ***");
-            Driver.Url = url;
+            Driver.Url = GitHubUrl;
             Driver.Manage().Window.Maximize();
-            Log($"Navigate to: {url}");
+            Log($"Navigate to: {GitHubUrl}");
         }
 
         [OneTimeTearDown]

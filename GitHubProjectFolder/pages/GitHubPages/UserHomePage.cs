@@ -6,8 +6,8 @@ namespace GitHub.pages.GitHubPages
 {
     class UserHomePage : GitHubPage
     {
-        private By newMenuBtn;
-        private By newDropDownOptions;
+        private readonly By newMenuBtn;
+        private readonly By newDropDownOptions;
 
         public UserHomePage ()
         {

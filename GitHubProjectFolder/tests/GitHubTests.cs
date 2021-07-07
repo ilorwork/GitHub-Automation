@@ -22,7 +22,7 @@ namespace GitHub.tests
             {
                 intro.ClickLogin()
                     .Signin(userName, password);
-                //wait until homepage is show
+                //wait until homepage/authorization is show
                 //TODO: Assert here
             });
         }
@@ -35,8 +35,8 @@ namespace GitHub.tests
             #region
             IntroductionPage intro = new IntroductionPage();
             
-            string userName = "githubcsharptest";
-            string password = "githubcsharp123";
+            const string userName = "githubcsharptest";
+            const string password = "githubcsharp123";
             string repName = $"rep no {ExtensionsMethods.CreateRandomNumber()}";
             string repDescription = $"{repName} Description";
             #endregion
@@ -60,13 +60,13 @@ namespace GitHub.tests
         {
             #region
             IntroductionPage intro = new IntroductionPage();
-            
-            string userName = "githubcsharptest";
-            string password = "githubcsharp123";
+
+            const string userName = "githubcsharptest";
+            const string password = "githubcsharp123";
             string repName = $"rep no {ExtensionsMethods.CreateRandomNumber()}";
             string repDescription = $"{repName} Description";
-            string issueTitle = "Why?";
-            string IssueBody = "Because";
+            const string issueTitle = "Why?";
+            const string issueBody = "Because";
             #endregion
             TestRunner(() =>
             {
@@ -81,7 +81,7 @@ namespace GitHub.tests
                 var issuesTab = repHome.SwitchToIssuesTab();
                 var newIssue = issuesTab.NewIssue();
                 
-                newIssue.CreateNewIssue(issueTitle, IssueBody);
+                newIssue.CreateNewIssue(issueTitle, issueBody);
                 //TODO: Assert here
             });
         }

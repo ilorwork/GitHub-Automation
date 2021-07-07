@@ -4,9 +4,9 @@ namespace GitHub.pages.GitHubPages
 {
     class NewIssuePage : IssuesTabPage
     {
-        private By titleField;
-        private By bodyField;
-        private By submitBtn;
+        private readonly By titleField;
+        private readonly By bodyField;
+        private readonly By submitBtn;
 
         public NewIssuePage()
         {

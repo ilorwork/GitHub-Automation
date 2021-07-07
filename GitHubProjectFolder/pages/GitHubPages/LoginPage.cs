@@ -4,9 +4,9 @@ namespace GitHub.pages.GitHubPages
 {
     class LoginPage : GitHubPage
     {
-        private By userNameField;
-        private By passwordField;
-        private By signInBtn;
+        private readonly By userNameField;
+        private readonly By passwordField;
+        private readonly By signInBtn;
 
         public LoginPage ()
         {

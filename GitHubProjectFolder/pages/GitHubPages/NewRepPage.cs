@@ -5,9 +5,9 @@ namespace GitHub.pages.GitHubPages
 {
     class NewRepPage : GitHubPage
     {
-        private By repNameField;
-        private By descriptionField;
-        private By createRepBtn;
+        private readonly By repNameField;
+        private readonly By descriptionField;
+        private readonly By createRepBtn;
 
         public NewRepPage()
         {
