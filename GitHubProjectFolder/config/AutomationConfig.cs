@@ -17,5 +17,9 @@ namespace GitHub.config
         {
             LocalLogger.PrintLog(info);
         }
+        public void ScreenShot(string windowHandle)
+        {
+            LocalLogger.CaptureCurrentWindow(windowHandle);
+        }
     }
 }
