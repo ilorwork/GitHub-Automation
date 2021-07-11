@@ -20,8 +20,8 @@ namespace GitHub.tests
             #endregion
             TestRunner(() =>
             {
-                intro.ClickLogin()
-                    .Signin(userName, password);
+                var loginPage = intro.ClickLogin();
+                loginPage.Signin(userName, password);
                 //wait until homepage/authorization is show
                 //TODO: Assert here
             });
