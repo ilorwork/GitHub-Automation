@@ -36,7 +36,7 @@ namespace GitHub.helpers
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
+                Console.WriteLine("Log Exception: {0}", ex);
             }
         }
     }
