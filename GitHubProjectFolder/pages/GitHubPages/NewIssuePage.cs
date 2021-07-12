@@ -15,6 +15,13 @@ namespace GitHub.pages.GitHubPages
             this.submitBtn = By.CssSelector("[data-view-component='true'].btn-primary.btn");
         }
 
+        // protected override void AssertInPage()
+        // {
+        //     WaitForElementToBeVisible(submitBtn);
+        // }
+
+        protected override string GetPageName() => "New Issue Page";
+
         public void CreateNewIssue(string issueTitle, string IssueBody)
         {
             SendKeys(titleField, issueTitle, "Issue title");

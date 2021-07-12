@@ -15,6 +15,13 @@ namespace GitHub.pages.GitHubPages
             this.newDropDownOptions = By.XPath("//*[@href='/new']/parent::details-menu/a");
         }
 
+        // protected override void AssertInPage()
+        // {
+        //     WaitForElementToBeVisible(newMenuBtn);
+        // }
+
+        protected override string GetPageName() => "User Home Page";
+
         public UserHomePage OpenNewMenu()
         {
             Click(newMenuBtn, "New menu button");

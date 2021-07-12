@@ -13,6 +13,13 @@ namespace GitHub.pages.GitHubPages
             this.repHomePageTabs = By.CssSelector(".UnderlineNav-body li [data-content]");
         }
 
+        // protected override void AssertInPage()
+        // {
+        //     WaitForElementToBeVisible(repHomePageTabs);
+        // }
+
+        protected override string GetPageName() => "Rep Home Page";
+
         private GitHubPage SwitchToTab(RepHomePageTabs tabName)
         {
             ClickOnOptionUsingEnum(FindElements(repHomePageTabs), tabName);

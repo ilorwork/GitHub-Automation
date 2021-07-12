@@ -9,6 +9,12 @@ namespace GitHub.pages.GitHubPages
         {
             this.signInBtn = By.CssSelector("[href = '/login']");
         }
+        // protected override void AssertInPage()
+        // {
+        //     WaitForElementToBeVisible(signInBtn);
+        // }
+
+        protected override string GetPageName() => "Introduction Page";
 
         public LoginPage ClickLogin()
         {

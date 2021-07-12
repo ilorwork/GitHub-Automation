@@ -11,6 +11,13 @@ namespace GitHub.pages.GitHubPages
             this.newIssueBtn = By.XPath("//span[contains(text(),'New issue')]");
         }
 
+        // protected override void AssertInPage()
+        // {
+        //     WaitForElementToBeVisible(newIssueBtn);
+        // }
+
+        protected override string GetPageName() => "Issues-Tab Page";
+
         public NewIssuePage NewIssue()
         {
             Click(newIssueBtn , "New issue button");

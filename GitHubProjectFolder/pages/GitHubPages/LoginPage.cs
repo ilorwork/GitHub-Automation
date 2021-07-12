@@ -14,6 +14,14 @@ namespace GitHub.pages.GitHubPages
             this.passwordField = By.Id("password");
             this.signInBtn = By.CssSelector("#login [type='submit']");
         }
+
+        // protected override void AssertInPage()
+        // {
+        //     WaitForElementToBeVisible(signInBtn);
+        // }
+
+        protected override string GetPageName() => "Login Page";
+
         public UserHomePage Signin(string userName, string password)
         {
             SendKeys(userNameField, userName, "User-Name");

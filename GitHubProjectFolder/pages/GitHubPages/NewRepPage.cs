@@ -16,6 +16,13 @@ namespace GitHub.pages.GitHubPages
             this.createRepBtn = By.XPath("//button[contains(text(),'Create repository')]");
         }
 
+        // protected override void AssertInPage()
+        // {
+        //     WaitForElementToBeVisible(createRepBtn);
+        // }
+
+        protected override string GetPageName() => "New Rep Page";
+
         public RepHomePage CreateNewRep(string repName, string repDescription)
         {
             SendKeys(repNameField, repName, "Repository name");
