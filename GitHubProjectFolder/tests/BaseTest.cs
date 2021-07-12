@@ -27,6 +27,8 @@ namespace GitHub.tests
 
         public void TestRunner(Action test)
         {
+            DateTime startTime = DateTime.UtcNow;
+
             try
             {
                 test();
@@ -36,6 +38,10 @@ namespace GitHub.tests
                 Log($"Test Failed: {e}");
                 Assert.Fail(e.ToString());
             }
+
+            DateTime endTime = DateTime.UtcNow;
+            TimeSpan testDuration = endTime - startTime;
+            Log("Test Duration: "+ new TimeSpan(testDuration.Minutes, testDuration.Seconds, 0).ToString().Replace(":00", ""));
         }
     }
 }
