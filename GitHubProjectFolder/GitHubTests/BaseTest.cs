@@ -2,7 +2,7 @@
 using GitHub.config;
 using NUnit.Framework;
 
-namespace GitHub.tests
+namespace GitHub.GitHubTests
 {
     [TestFixture]
     public class BaseTest : BasePage
