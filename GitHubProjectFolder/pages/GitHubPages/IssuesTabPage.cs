@@ -2,7 +2,7 @@
 
 namespace GitHub.pages.GitHubPages
 {
-    class IssuesTabPage : RepHomePage
+    public class IssuesTabPage : RepHomePage
     {
         private readonly By newIssueBtn;
 

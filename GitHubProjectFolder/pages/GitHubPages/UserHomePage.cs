@@ -4,7 +4,7 @@ using OpenQA.Selenium;
 
 namespace GitHub.pages.GitHubPages
 {
-    class UserHomePage : GitHubPage
+    public class UserHomePage : GitHubPage
     {
         private readonly By newMenuBtn;
         private readonly By newDropDownOptions;

@@ -1,5 +1,4 @@
 using GitHub.helpers;
-using GitHub.pages.GitHubPages;
 using NUnit.Framework;
 
 namespace GitHub.GitHubTests
@@ -16,8 +15,6 @@ namespace GitHub.GitHubTests
             TestRunner(() =>
             {
                 #region
-                IntroductionPage intro = new IntroductionPage();
-
                 const string userName = "githubcsharptest";
                 const string password = "githubcsharp123";
                 string repName = $"rep no {ExtensionsMethods.CreateRandomNumber()}";
@@ -26,7 +23,9 @@ namespace GitHub.GitHubTests
                 const string issueBody = "Because";
                 #endregion
 
-                var userHomePage = intro.ClickLogin()
+                var introPage = GetIntroductionPage();
+
+                var userHomePage = introPage.ClickLogin()
                     .Signin(userName, password);
 
                 var newRepPage = userHomePage.OpenNewMenu()

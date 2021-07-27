@@ -2,7 +2,7 @@
 
 namespace GitHub.pages.GitHubPages
 {
-    class IntroductionPage : GitHubPage
+    public class IntroductionPage : GitHubPage
     {
         private readonly By signInBtn;
         public IntroductionPage ()

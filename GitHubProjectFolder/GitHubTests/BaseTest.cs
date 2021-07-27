@@ -1,5 +1,6 @@
 ﻿using System;
 using GitHub.config;
+using GitHub.pages.GitHubPages;
 using NUnit.Framework;
 
 namespace GitHub.GitHubTests
@@ -42,6 +43,11 @@ namespace GitHub.GitHubTests
             DateTime endTime = DateTime.UtcNow;
             TimeSpan testDuration = endTime - startTime;
             Log("Test Duration: "+ new TimeSpan(testDuration.Minutes, testDuration.Seconds, 0).ToString().Replace(":00", ""));
+        }
+
+        public IntroductionPage GetIntroductionPage()
+        {
+            return new IntroductionPage();
         }
     }
 }

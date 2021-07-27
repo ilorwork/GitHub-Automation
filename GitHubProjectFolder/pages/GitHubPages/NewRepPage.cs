@@ -1,9 +1,8 @@
-﻿using GitHub.config;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 
 namespace GitHub.pages.GitHubPages
 {
-    class NewRepPage : GitHubPage
+    public class NewRepPage : GitHubPage
     {
         private readonly By repNameField;
         private readonly By descriptionField;

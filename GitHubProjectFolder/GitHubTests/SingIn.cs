@@ -1,5 +1,4 @@
 using GitHub.helpers;
-using GitHub.pages.GitHubPages;
 using NUnit.Framework;
 
 namespace GitHub.GitHubTests
@@ -8,6 +7,7 @@ namespace GitHub.GitHubTests
     public class SingIn : BaseTest
     {
         //[Repeat(2)]
+        //[Retry(2)]
         [Test, Order(1)]
         [Category(Categories.Login), Category(Categories.SanityTest), Category(Categories.RegressionTest)]
         [TestCase("githubcsharptest", "githubcsharp123")]
@@ -17,11 +17,9 @@ namespace GitHub.GitHubTests
         {
             TestRunner(() =>
             {
-                #region
-                IntroductionPage intro = new IntroductionPage();
-                #endregion
-
-                intro.ClickLogin()
+                var introPage = GetIntroductionPage();
+                
+                introPage.ClickLogin()
                     .Signin(userName, password);
                 //wait until homepage/authorization is show
                 //TODO: Assert here
