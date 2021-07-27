@@ -2,7 +2,7 @@
 
 namespace GitHub.pages.GitHubPages
 {
-    class LoginPage : GitHubPage
+    public class LoginPage : GitHubPage
     {
         private readonly By userNameField;
         private readonly By passwordField;

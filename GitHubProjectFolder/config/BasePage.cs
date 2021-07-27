@@ -69,14 +69,13 @@ namespace GitHub.config
 
         public IWebElement FindElement(By by)
         {
-            return Driver.FindElement(by);
+            return WaitForElementToBeVisible(by);
         }
 
-        public ReadOnlyCollection<IWebElement> FindElements(By by)
+        public ReadOnlyCollection<IWebElement> FindElements(By by, double timeoutInSeconds = DefaultTimeout)
         {
-            //TODO: wait for all elements disabled because need to check why it fails.
-            //Wait.Until(ExpectedConditions.VisibilityOfAllElementsLocatedBy(FindElements(by)));
-            return Driver.FindElements(by);
+            var wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(timeoutInSeconds));
+            return wait.Until(ExpectedConditions.VisibilityOfAllElementsLocatedBy(by));
         }
 
         public void ClickOnOptionUsingEnum(ReadOnlyCollection<IWebElement> listOfOptions, Enum option)

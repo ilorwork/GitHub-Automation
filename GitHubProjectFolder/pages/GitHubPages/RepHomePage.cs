@@ -4,7 +4,7 @@ using OpenQA.Selenium;
 
 namespace GitHub.pages.GitHubPages
 {
-    class RepHomePage : GitHubPage
+    public class RepHomePage : GitHubPage
     {
         private readonly By repHomePageTabs;
 
@@ -24,10 +24,12 @@ namespace GitHub.pages.GitHubPages
                     throw new Exception($"could not return any page for this option: {tabName}");
             }
         }
+
         public IssuesTabPage SwitchToIssuesTab()
         {
             return (IssuesTabPage)SwitchToTab(RepHomePageTabs.Issues);
         }
+
         public enum RepHomePageTabs
         {
             [Description("Issues")]
