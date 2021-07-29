@@ -19,7 +19,7 @@ namespace GitHub.pages.GitHubPages
         {
             SendKeys(issueTitleField, issueTitle, nameof(issueTitleField));
             SendKeys(issueBodyField, issueBody, nameof(issueBodyField));
-            Click(submitBtn, nameof(issueTitle));
+            Click(submitBtn, nameof(submitBtn));
         }
     }
 }
