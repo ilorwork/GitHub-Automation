@@ -12,7 +12,7 @@ namespace GitHub.pages.GitHubPages
 
         public LoginPage ClickLogin()
         {
-            Click(signInBtn, "Sign-In button");
+            Click(signInBtn, nameof(signInBtn));
             return new LoginPage();
         }
     }
