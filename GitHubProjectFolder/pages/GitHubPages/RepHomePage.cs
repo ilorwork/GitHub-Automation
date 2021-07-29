@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Reflection;
 using OpenQA.Selenium;
 
 namespace GitHub.pages.GitHubPages
@@ -13,21 +14,16 @@ namespace GitHub.pages.GitHubPages
             this.repHomePageTabs = By.CssSelector(".UnderlineNav-body li [data-content]");
         }
 
-        private GitHubPage SwitchToTab(RepHomePageTabs tabName)
+        private GitHubPage SwitchToTab(RepHomePageTabs tabName, Type returnPageType)
         {
             ClickOnOptionUsingEnum(FindElements(repHomePageTabs), tabName);
-            switch (tabName)
-            {
-                case RepHomePageTabs.Issues:
-                    return new IssuesTabPage();
-                default:
-                    throw new Exception($"could not return any page for this option: {tabName}");
-            }
+            var gottenPage = (GitHubPage)Activator.CreateInstance(returnPageType);
+            return gottenPage;
         }
 
         public IssuesTabPage SwitchToIssuesTab()
         {
-            return (IssuesTabPage)SwitchToTab(RepHomePageTabs.Issues);
+            return (IssuesTabPage)SwitchToTab(RepHomePageTabs.Issues, typeof(IssuesTabPage));
         }
 
         public enum RepHomePageTabs
