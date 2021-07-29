@@ -16,9 +16,9 @@ namespace GitHub.pages.GitHubPages
         }
         public UserHomePage Signin(string userName, string password)
         {
-            SendKeys(userNameField, userName, "User-Name");
-            SendKeys(passwordField, password, "Password");
-            Click(signInBtn, "Sign-In button");
+            SendKeys(userNameField, userName, nameof(userNameField));
+            SendKeys(passwordField, password, nameof(passwordField));
+            Click(signInBtn, nameof(signInBtn));
             return new UserHomePage();
         }
     }
