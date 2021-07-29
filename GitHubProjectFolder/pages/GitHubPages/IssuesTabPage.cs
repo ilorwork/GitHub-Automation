@@ -13,7 +13,7 @@ namespace GitHub.pages.GitHubPages
 
         public NewIssuePage NewIssue()
         {
-            Click(newIssueBtn , "New issue button");
+            Click(newIssueBtn , nameof(newIssueBtn));
             return new NewIssuePage();
         }
     }

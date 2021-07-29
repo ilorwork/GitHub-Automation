@@ -4,22 +4,22 @@ namespace GitHub.pages.GitHubPages
 {
     public class NewIssuePage : IssuesTabPage
     {
-        private readonly By titleField;
-        private readonly By bodyField;
+        private readonly By issueTitleField;
+        private readonly By issueBodyField;
         private readonly By submitBtn;
 
         public NewIssuePage()
         {
-            this.titleField = By.Id("issue_title");
-            this.bodyField = By.Id("issue_body");
+            this.issueTitleField = By.Id("issue_title");
+            this.issueBodyField = By.Id("issue_body");
             this.submitBtn = By.CssSelector("[data-view-component='true'].btn-primary.btn");
         }
 
-        public void CreateNewIssue(string issueTitle, string IssueBody)
+        public void CreateNewIssue(string issueTitle, string issueBody)
         {
-            SendKeys(titleField, issueTitle, "Issue title");
-            SendKeys(bodyField, IssueBody, "Issue body");
-            Click(submitBtn, "Submit button");
+            SendKeys(issueTitleField, issueTitle, nameof(issueTitleField));
+            SendKeys(issueBodyField, issueBody, nameof(issueBodyField));
+            Click(submitBtn, nameof(submitBtn));
         }
     }
 }
