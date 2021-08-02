@@ -14,16 +14,16 @@ namespace GitHub.pages.GitHubPages
             this.repHomePageTabs = By.CssSelector(".UnderlineNav-body li [data-content]");
         }
 
-        private GitHubPage SwitchToTab(RepHomePageTabs tabName, Type returnPageType)
+        private T SwitchToTab<T>(RepHomePageTabs tabName, Type returnPageType) where T : GitHubPage
         {
             ClickOnOptionUsingEnum(FindElements(repHomePageTabs), tabName);
             var gottenPage = (GitHubPage)Activator.CreateInstance(returnPageType);
-            return gottenPage;
+            return (T)gottenPage;
         }
 
         public IssuesTabPage SwitchToIssuesTab()
         {
-            return (IssuesTabPage)SwitchToTab(RepHomePageTabs.Issues, typeof(IssuesTabPage));
+            return SwitchToTab<IssuesTabPage>(RepHomePageTabs.Issues, typeof(IssuesTabPage));
         }
 
         public enum RepHomePageTabs
