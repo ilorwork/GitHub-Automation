@@ -18,7 +18,6 @@ namespace GitHub.pages.GitHubPages
         {
             ClickOnOptionUsingEnum(FindElements(repHomePageTabs), tabName);
             var gottenPage = (GitHubPage)Activator.CreateInstance(returnPageType);
-            Log($"%%%%%%%%%%%%%%%%% {gottenPage.GetType()} %%%%%%%%%%%%%%%");
             return (T)gottenPage;
         }
 
