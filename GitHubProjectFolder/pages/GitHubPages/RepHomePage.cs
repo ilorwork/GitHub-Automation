@@ -14,11 +14,11 @@ namespace GitHub.pages.GitHubPages
             this.repHomePageTabs = By.CssSelector(".UnderlineNav-body li [data-content]");
         }
 
-        private T SwitchToTab<T>(RepHomePageTabs tabName, Type returnPageType) where T : GitHubPage
+        private TGitHubPage SwitchToTab<TGitHubPage>(RepHomePageTabs tabName, Type returnPageType) where TGitHubPage : GitHubPage
         {
             ClickOnOptionUsingEnum(FindElements(repHomePageTabs), tabName);
             var gottenPage = (GitHubPage)Activator.CreateInstance(returnPageType);
-            return (T)gottenPage;
+            return (TGitHubPage)gottenPage;
         }
 
         public IssuesTabPage SwitchToIssuesTab()
