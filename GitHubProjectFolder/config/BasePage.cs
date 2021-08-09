@@ -66,6 +66,19 @@ namespace GitHub.config
         {
             return WaitForElementToBeClickable(FindElement(by), timeoutInSeconds);
         }
+        
+        public bool IsElementVisible(By by, double timeoutInSeconds = DefaultTimeout)
+        {
+            try
+            {
+                WaitForElementToBeVisible(by, timeoutInSeconds);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
 
         public IWebElement FindElement(By by)
         {

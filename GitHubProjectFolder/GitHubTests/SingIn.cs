@@ -4,7 +4,7 @@ using NUnit.Framework;
 namespace GitHub.GitHubTests
 {
     [Parallelizable]
-    public class SingIn : BaseTest
+    internal class SingIn : BaseTest
     {
         //[Repeat(2)]
         //[Retry(2)]
@@ -19,10 +19,11 @@ namespace GitHub.GitHubTests
             {
                 var introPage = GetIntroductionPage();
                 
-                introPage.ClickLogin()
+                var userHomePage = introPage.ClickLogin()
                     .Signin(userName, password);
-                //wait until homepage/authorization is show
-                //TODO: Assert here
+                //TODO: wait until homepage/authorization is show
+
+                Assert.True(userHomePage.IsDisplayed());
             });
         }
     }

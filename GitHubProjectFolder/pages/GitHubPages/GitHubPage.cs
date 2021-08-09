@@ -2,7 +2,8 @@
 
 namespace GitHub.pages.GitHubPages
 {
-    public abstract class GitHubPage : BasePage
+    internal abstract class GitHubPage : BasePage
     {
+        public abstract bool IsDisplayed();
     }
 }

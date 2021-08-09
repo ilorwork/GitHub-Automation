@@ -4,7 +4,7 @@ using NUnit.Framework;
 namespace GitHub.GitHubTests
 {
     [Parallelizable]
-    public class CreateIssue : BaseTest
+    internal class CreateIssue : BaseTest
     {
         [Test, Order(3)]
         [Category(Categories.Issue), Category(Categories.SanityTest), Category(Categories.RegressionTest)]
@@ -32,13 +32,12 @@ namespace GitHub.GitHubTests
                     .ChooseNewRepOption();
 
                 var repHomePage = newRepPage.CreateNewRep(repName, repDescription);
-                //TODO: Assert here ?
 
                 var issuesTab = repHomePage.SwitchToIssuesTab();
-                var newIssuePage = issuesTab.NewIssue();
+                var createIssuePage = issuesTab.NewIssue();
 
-                newIssuePage.CreateNewIssue(issueTitle, issueBody);
-                //TODO: Assert here
+                var issuePage = createIssuePage.CreateNewIssue(issueTitle, issueBody);
+                Assert.True(issuePage.IsDisplayed());
             });
         }
     }
