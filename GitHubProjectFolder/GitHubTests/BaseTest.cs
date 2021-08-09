@@ -8,6 +8,7 @@ namespace GitHub.GitHubTests
     [TestFixture]
     public class BaseTest : BasePage
     {
+        //TODO: need to load from configuration file/class.
         private const string GitHubUrl = "https://github.com";
 
         [OneTimeSetUp]
@@ -45,7 +46,7 @@ namespace GitHub.GitHubTests
             Log("Test Duration: "+ new TimeSpan(testDuration.Minutes, testDuration.Seconds, 0).ToString().Replace(":00", ""));
         }
 
-        public IntroductionPage GetIntroductionPage()
+        internal IntroductionPage GetIntroductionPage()
         {
             return new IntroductionPage();
         }

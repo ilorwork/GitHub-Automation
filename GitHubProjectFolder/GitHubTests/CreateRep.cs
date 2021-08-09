@@ -4,7 +4,7 @@ using NUnit.Framework;
 namespace GitHub.GitHubTests
 {
     [Parallelizable]
-    public class CreateRep : BaseTest
+    internal class CreateRep : BaseTest
     {
         [Test]
         [Category(Categories.Repository), Category(Categories.SanityTest), Category(Categories.RegressionTest)]
@@ -28,8 +28,8 @@ namespace GitHub.GitHubTests
                 var newRepPage = userHomePage.OpenNewMenu()
                     .ChooseNewRepOption();
 
-                newRepPage.CreateNewRep(repName, repDescription);
-                //TODO: Assert here
+                var repHomePage = newRepPage.CreateNewRep(repName, repDescription);
+                Assert.True(repHomePage.IsDisplayed());
             });
         }
     }

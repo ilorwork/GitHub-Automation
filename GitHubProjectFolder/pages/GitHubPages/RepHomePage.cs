@@ -5,13 +5,18 @@ using OpenQA.Selenium;
 
 namespace GitHub.pages.GitHubPages
 {
-    public class RepHomePage : GitHubPage
+    internal class RepHomePage : GitHubPage
     {
         private readonly By repHomePageTabs;
 
         public RepHomePage ()
         {
             this.repHomePageTabs = By.CssSelector(".UnderlineNav-body li [data-content]");
+        }
+
+        public override bool IsDisplayed()
+        {
+            return IsElementVisible(repHomePageTabs);
         }
 
         private TGitHubPage SwitchToTab<TGitHubPage>(RepHomePageTabs tabName, Type returnPageType) where TGitHubPage : GitHubPage

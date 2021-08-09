@@ -4,7 +4,7 @@ using OpenQA.Selenium;
 
 namespace GitHub.pages.GitHubPages
 {
-    public class UserHomePage : GitHubPage
+    internal class UserHomePage : GitHubPage
     {
         private readonly By newMenuBtn;
         private readonly By newDropDownOptions;
@@ -15,11 +15,17 @@ namespace GitHub.pages.GitHubPages
             this.newDropDownOptions = By.XPath("//*[@href='/new']/parent::details-menu/a");
         }
 
+        public override bool IsDisplayed()
+        {
+            return IsElementVisible(newMenuBtn);
+        }
+
         public UserHomePage OpenNewMenu()
         {
             Click(newMenuBtn, nameof(newMenuBtn));
             return this;
         }
+
         private TGitHubPage ChooseOptionFromNewMenu<TGitHubPage>(NewMenuOptions newMenuOptions, Type returnPageType) where TGitHubPage : GitHubPage
         {
             ClickOnOptionUsingEnum(FindElements(newDropDownOptions), newMenuOptions);
@@ -32,7 +38,7 @@ namespace GitHub.pages.GitHubPages
         {
             return ChooseOptionFromNewMenu<NewRepPage>(NewMenuOptions.NewRepository, typeof(NewRepPage));
         }
-        
+
         public enum NewMenuOptions
         {
             [Description("New repository")]

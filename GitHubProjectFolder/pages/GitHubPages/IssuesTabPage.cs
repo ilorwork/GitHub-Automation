@@ -2,7 +2,7 @@
 
 namespace GitHub.pages.GitHubPages
 {
-    public class IssuesTabPage : RepHomePage
+    internal class IssuesTabPage : RepHomePage
     {
         private readonly By newIssueBtn;
 
@@ -11,10 +11,10 @@ namespace GitHub.pages.GitHubPages
             this.newIssueBtn = By.XPath("//span[contains(text(),'New issue')]");
         }
 
-        public NewIssuePage NewIssue()
+        public CreateIssuePage NewIssue()
         {
             Click(newIssueBtn , nameof(newIssueBtn));
-            return new NewIssuePage();
+            return new CreateIssuePage();
         }
     }
 }

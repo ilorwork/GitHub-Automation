@@ -1,6 +1,6 @@
 ﻿namespace GitHub.helpers
 {
-    public static class Categories
+    internal static class Categories
     {
         public const string SanityTest = "SanityTest";
         public const string RegressionTest = "RegressionTest";

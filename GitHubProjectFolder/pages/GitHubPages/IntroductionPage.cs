@@ -2,12 +2,17 @@
 
 namespace GitHub.pages.GitHubPages
 {
-    public class IntroductionPage : GitHubPage
+    internal class IntroductionPage : GitHubPage
     {
         private readonly By signInBtn;
         public IntroductionPage ()
         {
             this.signInBtn = By.CssSelector("[href = '/login']");
+        }
+
+        public override bool IsDisplayed()
+        {
+            return IsElementVisible(signInBtn);
         }
 
         public LoginPage ClickLogin()

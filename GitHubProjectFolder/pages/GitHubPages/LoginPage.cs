@@ -2,7 +2,7 @@
 
 namespace GitHub.pages.GitHubPages
 {
-    public class LoginPage : GitHubPage
+    internal class LoginPage : GitHubPage
     {
         private readonly By userNameField;
         private readonly By passwordField;
@@ -14,6 +14,11 @@ namespace GitHub.pages.GitHubPages
             this.passwordField = By.Id("password");
             this.signInBtn = By.CssSelector("#login [type='submit']");
         }
+        public override bool IsDisplayed()
+        {
+            return IsElementVisible(signInBtn);
+        }
+
         public UserHomePage Signin(string userName, string password)
         {
             SendKeys(userNameField, userName, nameof(userNameField));
