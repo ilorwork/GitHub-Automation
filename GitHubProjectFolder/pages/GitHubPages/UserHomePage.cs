@@ -20,13 +20,13 @@ namespace GitHub.pages.GitHubPages
             Click(newMenuBtn, nameof(newMenuBtn));
             return this;
         }
-        private T ChooseOptionFromNewMenu<T>(NewMenuOptions newMenuOptions, Type returnPageType) where T : GitHubPage
+        private TGitHubPage ChooseOptionFromNewMenu<TGitHubPage>(NewMenuOptions newMenuOptions, Type returnPageType) where TGitHubPage : GitHubPage
         {
             ClickOnOptionUsingEnum(FindElements(newDropDownOptions), newMenuOptions);
 
             //TODO: check maybe using ByAll method for the return type here
             var gottenPage = (GitHubPage)Activator.CreateInstance(returnPageType);
-            return (T)gottenPage;
+            return (TGitHubPage)gottenPage;
         }
         public NewRepPage ChooseNewRepOption()
         {
