@@ -93,7 +93,7 @@ namespace GitHub.config
 
         public void ClickOnOptionUsingEnum(ReadOnlyCollection<IWebElement> listOfOptions, Enum option)
         {
-            bool elementFound = false;
+            bool elementFound = default;
             foreach (var webElement in listOfOptions)
             {
                 string enumOptionDescription = ExtensionsMethods.GetDescription(option);
