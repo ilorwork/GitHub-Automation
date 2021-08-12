@@ -2,6 +2,7 @@
 using System.Globalization;
 using System.IO;
 using System.Threading;
+using GitHub.config;
 
 namespace GitHub.helpers
 {
@@ -9,6 +10,8 @@ namespace GitHub.helpers
     {
         public static void PrintLog(string message)
         {
+            if (!AutomationConfig.IsLocal) return;
+
             string logsFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "Local Logs");
 
             try
