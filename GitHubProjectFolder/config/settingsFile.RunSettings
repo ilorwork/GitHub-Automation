@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+Note: use the following root element in order to have auto-completion and validation
+Return the original root element in order to run the test.
+-->
+
+<RunSettings>
+	<!-- Parameters used by tests at runtime -->
+	<TestRunParameters>
+		<Parameter name="local" value="true" />	<!--true/false-->
+		<Parameter name="retries" value="1" />	<!--whole number starts from 1-->
+	</TestRunParameters>
+</RunSettings>
