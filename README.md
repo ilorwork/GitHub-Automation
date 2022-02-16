@@ -1,9 +1,8 @@
 # GitHub-Automation
 
  ## Summary:
-C# Automation project for GitHub.com:
-tests basic new-user operations
-such as - creating repository, creating project, and so on.
+C# Automation project for GitHub.com.
+Simulates basic new-user operations such as - creating a repository, creating a project, etc.
 
 ## Modes of operation
 * Local (Visual Studio)
@@ -26,8 +25,8 @@ When running from Visual Studio, the most common way to configure these paramete
 ### Parameters
 
 * **local**
-  * Values: [`true`, `false`]. Default = `true`
+  * Values: [`"true"`, `"false"`]. Default = `"true"`
   * Description: true to create a local log, and false to avoid the local log.
 * **retries**
-  * Values: [String that contains a whole number starts from 1]. Default = `1`
+  * Values: [whole number starts from `"1"`]. Default = `"1"`
   * Description: The times to retry test case on failure only.
