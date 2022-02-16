@@ -1,21 +1,21 @@
 # GitHub-Automation
 
  ## Summary:
-C# Automation project for GitHub.com.
+C# Automation project for GitHub.com: 
 Simulates basic new-user operations such as - creating a repository, creating a project, etc.
-
-## Modes of operation
-* Local (Visual Studio)
-* Web
-* Filter by categories
-* Parallel execution
-* retry on test failure
 
 ## Main technologies
 This project leverage the following main technologies:
 * C#/.Net Core 3.1
 * NUnit 3
 * Selenium WebDriver
+
+## Modes of operation
+* Local (Visual Studio) - details in the configuration section below.
+* Web (Desktop)
+* Filter by categories
+* Parallel execution
+* retry on test failure - details in the configuration section below.
 
 ## Configuration
 The different modes of operation are controlled via [Nunit Test Parameters](https://docs.nunit.org/articles/nunit/writing-tests/TestContext.html#testparameters)
