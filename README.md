@@ -9,6 +9,7 @@ This project leverage the following main technologies:
 * C#/.Net Core 3.1
 * NUnit 3
 * Selenium WebDriver
+* POM design pattern
 
 ## Modes of operation
 * Local (Visual Studio) - details in the configuration section below.
