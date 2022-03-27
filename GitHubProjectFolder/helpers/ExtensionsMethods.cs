@@ -19,7 +19,7 @@ namespace GitHub.helpers
 
         public static int CreateRandomNumber()
         {
-            Random rand = new Random();
+            var rand = new Random();
             return rand.Next(0, 99999999);
         }
     }

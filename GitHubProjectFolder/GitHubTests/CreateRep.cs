@@ -6,7 +6,7 @@ namespace GitHub.GitHubTests
     [Parallelizable]
     internal class CreateRep : BaseTest
     {
-        [Test]
+        [Test, Order(2)]
         [Category(Categories.Repository), Category(Categories.SanityTest), Category(Categories.RegressionTest)]
         //TODO: Add- DDT for createRep test
         public void CreateRepTest()
@@ -16,8 +16,8 @@ namespace GitHub.GitHubTests
                 #region
                 const string userName = "githubcsharptest";
                 const string password = "githubcsharp123";
-                string repName = $"rep no {ExtensionsMethods.CreateRandomNumber()}";
-                string repDescription = $"{repName} Description";
+                var repName = $"rep no {ExtensionsMethods.CreateRandomNumber()}";
+                var repDescription = $"{repName} Description";
                 #endregion
 
                 var introPage = GetIntroductionPage();

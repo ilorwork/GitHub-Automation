@@ -1,28 +1,20 @@
-﻿using System;
-using GitHub.helpers;
+﻿using GitHub.helpers;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Support.UI;
 
 namespace GitHub.config
 {
     public class AutomationConfig
     {
-        public const double DefaultTimeout = 30;
-        public const double DefaultTimeoutForLongWaits = 60;
+        // TODO: add FireFox
         public static IWebDriver Driver = new ChromeDriver();
-        public WebDriverWait Wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(DefaultTimeout));
-        public static bool IsLocal = Convert.ToBoolean(GetParams("local", "true"));
+        // TODO: add selenium grid
+        public bool IsLocal => GetParams("local", true);
+        public const int Retries = 2;
 
-        public void Log(string info)
-        {
-            LocalLogger.PrintLog(info);
-        }
+        public void Log(string info) => LocalLogger.PrintLog(info);
 
-        private static string GetParams(string param, string defaultV)
-        {
-            return TestContext.Parameters.Get(param, defaultV);
-        }
+        public T GetParams<T>(string param, T defaultV) => TestContext.Parameters.Get(param, defaultV);
     }
 }

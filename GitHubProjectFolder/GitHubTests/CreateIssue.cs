@@ -6,7 +6,7 @@ namespace GitHub.GitHubTests
     [Parallelizable]
     internal class CreateIssue : BaseTest
     {
-        [Test, Order(3)]
+        [Test, Order(3), Retry(Retries)]
         [Category(Categories.Issue), Category(Categories.SanityTest), Category(Categories.RegressionTest)]
         //TODO: Add- DDT for createRep test
         //TODO: optional bug - rep name already exist.
@@ -17,8 +17,8 @@ namespace GitHub.GitHubTests
                 #region
                 const string userName = "githubcsharptest";
                 const string password = "githubcsharp123";
-                string repName = $"rep no {ExtensionsMethods.CreateRandomNumber()}";
-                string repDescription = $"{repName} Description";
+                var repName = $"rep no {ExtensionsMethods.CreateRandomNumber()}";
+                var repDescription = $"{repName} Description";
                 const string issueTitle = "Why?";
                 const string issueBody = "Because";
                 #endregion
