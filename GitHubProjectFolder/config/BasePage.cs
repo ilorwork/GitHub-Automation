@@ -9,6 +9,7 @@ namespace GitHub.config
 {
     public class BasePage : AutomationConfig
     {
+        protected const double DefaultTimeout = 30;
 
         public void Click(By by, string description = null)
         {
@@ -96,7 +97,7 @@ namespace GitHub.config
             bool elementFound = default;
             foreach (var webElement in listOfOptions)
             {
-                string enumOptionDescription = ExtensionsMethods.GetDescription(option);
+                var enumOptionDescription = ExtensionsMethods.GetDescription(option);
                 if (!webElement.Text.Equals(enumOptionDescription)) continue;
                 Click(webElement, enumOptionDescription);
                 elementFound = true;

@@ -10,22 +10,24 @@ namespace GitHub.helpers
     {
         public static void PrintLog(string message)
         {
-            if (!AutomationConfig.IsLocal) return;
+            var config = new AutomationConfig();
 
-            string logsFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "Local Logs");
+            if (!config.IsLocal) return;
+
+            var logsFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "Local Logs");
 
             try
             {
-                string formattedMessage = $"[{DateTime.Now:T}]({Thread.CurrentThread.ManagedThreadId}) {message}";
+                var formattedMessage = $"[{DateTime.Now:T}]({Thread.CurrentThread.ManagedThreadId}) {message}";
 
                 if (!Directory.Exists(logsFolder))
                 {
                     Console.WriteLine("Creating logs folder: " + logsFolder);
                     Directory.CreateDirectory(logsFolder);
                 }
-                string date = DateTime.Today.ToString("MM-dd-yyyy", CultureInfo.InvariantCulture);
-                string logFilename = $"{date}.log";
-                string logFullPath = Path.Combine(logsFolder, logFilename);
+                var date = DateTime.Today.ToString("MM-dd-yyyy", CultureInfo.InvariantCulture);
+                var logFilename = $"{date}.log";
+                var logFullPath = Path.Combine(logsFolder, logFilename);
 
                 formattedMessage += Environment.NewLine;
                 if (!File.Exists(logFullPath))
