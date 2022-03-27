@@ -11,6 +11,7 @@ namespace GitHub.config
         public static IWebDriver Driver = new ChromeDriver();
         // TODO: add selenium grid
         public bool IsLocal => GetParams("local", true);
+        public const int Retries = 2;
 
         public void Log(string info) => LocalLogger.PrintLog(info);
 
