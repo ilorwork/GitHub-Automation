@@ -33,7 +33,7 @@ When running from Visual Studio, the most common way to configure these paramete
   * Description: The times to retry test case on failure only.
 
 ## ⚙️Setup
-* Download .NET (not .NET Core)
+* [Download .NET](https://dotnet.microsoft.com/en-us/download)
 * Open terminal and run dotnet --info to ensure installation.
 * git clone https://github.com/ilorwork/GitHub-Automation.git
 * Download an IDE of your choice. Probably VS for Mac, or VS Code.
