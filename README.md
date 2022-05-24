@@ -1,6 +1,6 @@
 # GitHub-Automation
 
- ## Summary:
+ ## Summary
 C# Automation project for GitHub.com: 
 Simulates basic new-user operations such as - creating a repository, creating a project, etc.
 
