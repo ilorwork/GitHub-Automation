@@ -36,7 +36,7 @@ When running from Visual Studio, the most common way to configure these paramete
 * [Download .NET](https://dotnet.microsoft.com/en-us/download)
 * Open terminal and run dotnet --info to ensure installation.
 * git clone https://github.com/ilorwork/GitHub-Automation.git
-* Download an IDE of your choice. Probably VS for Mac, or VS Code.
+* Download an IDE of your choice. Probably Visual Studio, or VS Code.
 
 ## Running tests
 * Run tests of GitHub.csproj using [dotnet CLI](https://docs.microsoft.com/en-us/dotnet/core/tools/)
