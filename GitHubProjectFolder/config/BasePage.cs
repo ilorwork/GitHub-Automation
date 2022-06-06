@@ -38,7 +38,7 @@ namespace GitHub.config
             try
             {
                 element = FindElement(by);
-                this.Click(element, description);
+                Click(element, description);
                 element.Clear();
                 element.SendKeys(text);
                 Log($"Send: {text} To: {description}");
