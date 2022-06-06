@@ -15,9 +15,7 @@ namespace GitHub.GitHubTests
         public void OneTimeSetUp()
         {
             Log($"*** Test started: {TestContext.CurrentContext.Test.Name} ***");
-            Driver.Url = GitHubUrl;
             Driver.Manage().Window.Maximize();
-            Log($"Navigate to: {GitHubUrl}");
         }
 
         [OneTimeTearDown]
@@ -48,6 +46,8 @@ namespace GitHub.GitHubTests
 
         internal IntroductionPage GetIntroductionPage()
         {
+            Driver.Url = GitHubUrl;
+            Log($"Navigate to: {GitHubUrl}");
             return new IntroductionPage();
         }
     }
