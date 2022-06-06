@@ -6,10 +6,10 @@ namespace GitHub.GitHubTests
     [Parallelizable]
     internal class CreateIssue : BaseTest
     {
-        [Test, Order(3), Retry(Retries)]
+        [Test, Retry(Retries)]
         [Category(Categories.Issue), Category(Categories.SanityTest), Category(Categories.RegressionTest)]
         //TODO: Add- DDT for createRep test
-        //TODO: optional bug - rep name already exist.
+        //TODO: optional bug - rep name already exist. (Delete reps/check is exist/check for exception)
         public void CreateIssueTest()
         {
             TestRunner(() =>

@@ -6,7 +6,7 @@ namespace GitHub.GitHubTests
     [Parallelizable]
     internal class CreateRep : BaseTest
     {
-        [Test, Order(2)]
+        [Test, Retry(Retries)]
         [Category(Categories.Repository), Category(Categories.SanityTest), Category(Categories.RegressionTest)]
         //TODO: Add- DDT for createRep test
         public void CreateRepTest()
