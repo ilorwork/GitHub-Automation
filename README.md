@@ -18,6 +18,12 @@ This project leverage the following main technologies:
 * Parallel execution
 * retry on test failure - details in the configuration section below.
 
+## ⚙️Setup
+* [Download .NET](https://dotnet.microsoft.com/en-us/download)
+* Open terminal and run dotnet --info to ensure installation.
+* git clone https://github.com/ilorwork/GitHub-Automation.git
+* Download an IDE of your choice. Probably Visual Studio, or VS Code.
+
 ## Configuration
 The different modes of operation are controlled via [Nunit Test Parameters](https://docs.nunit.org/articles/nunit/writing-tests/TestContext.html#testparameters)
 
@@ -28,15 +34,9 @@ When running from Visual Studio, the most common way to configure these paramete
 * **local**
   * Values: [`"true"`, `"false"`]. Default = `"true"`
   * Description: true to create a local log, and false to avoid the local log.
-* **retries**
+* **retries(not supported from the 'runsettings' anymore, only from inside the 'AutomationConfig.cs')**
   * Values: [whole number starts from `"1"`]. Default = `"1"`
   * Description: The times to retry test case on failure only.
-
-## ⚙️Setup
-* [Download .NET](https://dotnet.microsoft.com/en-us/download)
-* Open terminal and run dotnet --info to ensure installation.
-* git clone https://github.com/ilorwork/GitHub-Automation.git
-* Download an IDE of your choice. Probably Visual Studio, or VS Code.
 
 ## Running tests
 * Run tests of GitHub.csproj using [dotnet CLI](https://docs.microsoft.com/en-us/dotnet/core/tools/)
