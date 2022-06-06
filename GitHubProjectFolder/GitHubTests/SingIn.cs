@@ -14,7 +14,7 @@ namespace GitHub.GitHubTests
         {
             TestRunner(() =>
             {
-                var introPage = GetIntroductionPage();
+                var introPage = NavigateToIntroductionPage();
                 
                 var userHomePage = introPage.ClickLogin()
                     .Signin(userName, password);

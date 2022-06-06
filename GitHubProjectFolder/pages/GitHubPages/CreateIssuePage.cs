@@ -10,9 +10,9 @@ namespace GitHub.pages.GitHubPages
 
         public CreateIssuePage()
         {
-            this.issueTitleField = By.Id("issue_title");
-            this.issueBodyField = By.Id("issue_body");
-            this.submitBtn = By.CssSelector("[data-view-component='true'].btn-primary.btn");
+            issueTitleField = By.Id("issue_title");
+            issueBodyField = By.Id("issue_body");
+            submitBtn = By.CssSelector("[data-view-component='true'].btn-primary.btn");
         }
 
         public IssuePage CreateNewIssue(string issueTitle, string issueBody)

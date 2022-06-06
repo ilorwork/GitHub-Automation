@@ -10,15 +10,12 @@ namespace GitHub.pages.GitHubPages
 
         public NewRepPage()
         {
-            this.repNameField = By.Id("repository_name");
-            this.repDescriptionField = By.Id("repository_description");
-            this.createRepBtn = By.XPath("//button[contains(text(),'Create repository')]");
+            repNameField = By.Id("repository_name");
+            repDescriptionField = By.Id("repository_description");
+            createRepBtn = By.XPath("//button[contains(text(),'Create repository')]");
         }
 
-        public override bool IsDisplayed()
-        {
-            return IsElementVisible(repNameField);
-        }
+        public override bool IsDisplayed() => IsElementVisible(repNameField);
 
         public RepHomePage CreateNewRep(string repName, string repDescription)
         {

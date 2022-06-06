@@ -1,6 +1,5 @@
 ﻿using System;
 using System.ComponentModel;
-using System.Reflection;
 using OpenQA.Selenium;
 
 namespace GitHub.pages.GitHubPages
@@ -11,13 +10,10 @@ namespace GitHub.pages.GitHubPages
 
         public RepHomePage ()
         {
-            this.repHomePageTabs = By.CssSelector(".UnderlineNav-body li [data-content]");
+            repHomePageTabs = By.CssSelector(".UnderlineNav-body li [data-content]");
         }
 
-        public override bool IsDisplayed()
-        {
-            return IsElementVisible(repHomePageTabs);
-        }
+        public override bool IsDisplayed() => IsElementVisible(repHomePageTabs);
 
         private TGitHubPage SwitchToTab<TGitHubPage>(RepHomePageTabs tabName, Type returnPageType) where TGitHubPage : GitHubPage
         {

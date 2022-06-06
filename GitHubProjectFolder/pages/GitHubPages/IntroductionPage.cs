@@ -7,13 +7,10 @@ namespace GitHub.pages.GitHubPages
         private readonly By signInBtn;
         public IntroductionPage ()
         {
-            this.signInBtn = By.CssSelector("[href = '/login']");
+            signInBtn = By.CssSelector("[href = '/login']");
         }
 
-        public override bool IsDisplayed()
-        {
-            return IsElementVisible(signInBtn);
-        }
+        public override bool IsDisplayed() => IsElementVisible(signInBtn);
 
         public LoginPage ClickLogin()
         {

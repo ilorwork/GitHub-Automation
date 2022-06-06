@@ -27,7 +27,7 @@ namespace GitHub.GitHubTests
 
         public void TestRunner(Action test)
         {
-            DateTime startTime = DateTime.UtcNow;
+            var startTime = DateTime.UtcNow;
 
             try
             {
@@ -39,12 +39,12 @@ namespace GitHub.GitHubTests
                 Assert.Fail(e.ToString());
             }
 
-            DateTime endTime = DateTime.UtcNow;
-            TimeSpan testDuration = endTime - startTime;
+            var endTime = DateTime.UtcNow;
+            var testDuration = endTime - startTime;
             Log("Test Duration: "+ new TimeSpan(testDuration.Minutes, testDuration.Seconds, 0).ToString().Replace(":00", ""));
         }
 
-        internal IntroductionPage GetIntroductionPage()
+        internal IntroductionPage NavigateToIntroductionPage()
         {
             Driver.Url = GitHubUrl;
             Log($"Navigate to: {GitHubUrl}");

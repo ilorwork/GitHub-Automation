@@ -10,14 +10,11 @@ namespace GitHub.pages.GitHubPages
 
         public LoginPage ()
         {
-            this.userNameField = By.Id("login_field");
-            this.passwordField = By.Id("password");
-            this.signInBtn = By.CssSelector("#login [type='submit']");
+            userNameField = By.Id("login_field");
+            passwordField = By.Id("password");
+            signInBtn = By.CssSelector("#login [type='submit']");
         }
-        public override bool IsDisplayed()
-        {
-            return IsElementVisible(signInBtn);
-        }
+        public override bool IsDisplayed() => IsElementVisible(signInBtn);
 
         public UserHomePage Signin(string userName, string password)
         {
