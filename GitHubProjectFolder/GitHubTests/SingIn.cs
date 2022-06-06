@@ -6,7 +6,7 @@ namespace GitHub.GitHubTests
     [Parallelizable]
     internal class SingIn : BaseTest
     {
-        [Test, Order(1)]
+        [Test, Retry(Retries)]
         [Category(Categories.Login), Category(Categories.SanityTest), Category(Categories.RegressionTest)]
         [TestCase("githubcsharptest", "githubcsharp123")]
         //TODO: BUG- fix GMail authorization
