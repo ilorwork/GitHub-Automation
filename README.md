@@ -1,6 +1,6 @@
 # GitHub-Automation
 
- ## Summary:
+ ## Summary
 C# Automation project for GitHub.com: 
 Simulates basic new-user operations such as - creating a repository, creating a project, etc.
 
@@ -31,3 +31,20 @@ When running from Visual Studio, the most common way to configure these paramete
 * **retries**
   * Values: [whole number starts from `"1"`]. Default = `"1"`
   * Description: The times to retry test case on failure only.
+
+## ⚙️Setup
+* [Download .NET](https://dotnet.microsoft.com/en-us/download)
+* Open terminal and run dotnet --info to ensure installation.
+* git clone https://github.com/ilorwork/GitHub-Automation.git
+* Download an IDE of your choice. Probably Visual Studio, or VS Code.
+
+## Running tests
+* Run tests of GitHub.csproj using [dotnet CLI](https://docs.microsoft.com/en-us/dotnet/core/tools/)
+```
+cd GitHub-Automation\GitHubProjectFolder\
+# run all tests
+dotnet test
+# run tests by categories
+dotnet test --filter "Category=<Category_name>"
+```
+For more info about [dotnet filter command](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-test#filter-option-details)
