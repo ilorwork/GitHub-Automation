@@ -75,7 +75,7 @@ namespace GitHub.config
                 WaitForElementToBeVisible(by, timeoutInSeconds);
                 return true;
             }
-            catch
+            catch (WebDriverTimeoutException)
             {
                 return false;
             }
@@ -97,7 +97,7 @@ namespace GitHub.config
             bool elementFound = default;
             foreach (var webElement in listOfOptions)
             {
-                var enumOptionDescription = ExtensionsMethods.GetDescription(option);
+                var enumOptionDescription = HelpersMethods.GetEnumDescriptionFromValue(option);
                 if (!webElement.Text.Equals(enumOptionDescription)) continue;
                 Click(webElement, enumOptionDescription);
                 elementFound = true;

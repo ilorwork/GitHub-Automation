@@ -4,9 +4,9 @@ using System.Reflection;
 
 namespace GitHub.helpers
 {
-    public static class ExtensionsMethods
+    public static class HelpersMethods
     {
-        public static string GetDescription(Enum value)
+        public static string GetEnumDescriptionFromValue(Enum value)
         {
             // Get the Description attribute value for the ENUM
             FieldInfo fi = value.GetType().GetField(value.ToString());//gets ENUM value

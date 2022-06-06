@@ -6,10 +6,7 @@ namespace GitHub.pages.GitHubPages
     {
         private readonly By newIssueBtn;
 
-        public IssuesTabPage()
-        {
-            this.newIssueBtn = By.XPath("//span[contains(text(),'New issue')]");
-        }
+        public IssuesTabPage() => newIssueBtn = By.XPath("//span[contains(text(),'New issue')]");
 
         public CreateIssuePage NewIssue()
         {

@@ -11,14 +11,11 @@ namespace GitHub.pages.GitHubPages
 
         public UserHomePage ()
         {
-            this.newMenuBtn = By.CssSelector("summary[aria-label = 'Create new…']");
-            this.newDropDownOptions = By.XPath("//*[@href='/new']/parent::details-menu/a");
+            newMenuBtn = By.CssSelector("summary[aria-label = 'Create new…']");
+            newDropDownOptions = By.XPath("//*[@href='/new']/parent::details-menu/a");
         }
 
-        public override bool IsDisplayed()
-        {
-            return IsElementVisible(newMenuBtn);
-        }
+        public override bool IsDisplayed() => IsElementVisible(newMenuBtn);
 
         public UserHomePage OpenNewMenu()
         {

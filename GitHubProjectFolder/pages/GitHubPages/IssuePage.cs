@@ -6,14 +6,8 @@ namespace GitHub.pages.GitHubPages
     {
         private readonly By closeIssueBtn;
 
-        public IssuePage()
-        {
-            this.closeIssueBtn = By.Name("comment_and_close");
-        }
+        public IssuePage() => closeIssueBtn = By.Name("comment_and_close");
 
-        public override bool IsDisplayed()
-        {
-            return IsElementVisible(closeIssueBtn);
-        }
+        public override bool IsDisplayed() => IsElementVisible(closeIssueBtn);
     }
 }
