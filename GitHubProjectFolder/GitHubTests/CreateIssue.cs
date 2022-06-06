@@ -9,7 +9,7 @@ namespace GitHub.GitHubTests
         [Test, Retry(Retries)]
         [Category(Categories.Issue), Category(Categories.SanityTest), Category(Categories.RegressionTest)]
         //TODO: Add- DDT for createRep test
-        //TODO: optional bug - rep name already exist.
+        //TODO: optional bug - rep name already exist. (Delete reps/check is exist/check for exception)
         public void CreateIssueTest()
         {
             TestRunner(() =>
