@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using GitHub.config;
 using GitHub.pages.GitHubPages;
 using NUnit.Framework;
@@ -14,8 +15,19 @@ namespace GitHub.GitHubTests
         [OneTimeSetUp]
         public void OneTimeSetUp()
         {
-            Log($"*** Test started: {TestContext.CurrentContext.Test.Name} ***");
-            Driver.Manage().Window.Maximize();
+            try
+            {
+                Log($"*** Test started: {TestContext.CurrentContext.Test.Name} ***");
+                Driver.Manage().Window.Maximize();
+            }
+            catch
+            {
+                Process[] processes = Process.GetProcessesByName("chromedriver");
+                foreach (Process process in processes)
+                {
+                    process.Kill();
+                }
+            }
         }
 
         [OneTimeTearDown]
