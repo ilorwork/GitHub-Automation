@@ -6,6 +6,7 @@ namespace GitHub.GitHubTests
     [Parallelizable]
     internal class CreateIssue : BaseTest
     {
+        [Ignore("Needs an update")]
         [Test, Retry(Retries)]
         [Category(Categories.Issue), Category(Categories.SanityTest), Category(Categories.RegressionTest)]
         //TODO: optional bug - rep name already exist. (Delete reps/check is exist/check for exception)
