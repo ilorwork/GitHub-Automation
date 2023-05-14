@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Linq;
 using GitHub.helpers;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
@@ -10,13 +11,14 @@ namespace GitHub.config
     public class BasePage : AutomationConfig
     {
         protected const double DefaultTimeout = 30;
+        private const string defaultDesc = "Unspecified element";
 
-        public void Click(By by, string description = null)
+        public void Click(By by, string description = defaultDesc)
         {
             Click(WaitForElementToBeClickable(by), description);
         }
 
-        public void Click(IWebElement element, string description = null)
+        public void Click(IWebElement element, string description = defaultDesc)
         {
             try
             {
@@ -32,7 +34,15 @@ namespace GitHub.config
             }
         }
 
-        public void SendKeys(By by, string text, string description = null)
+        public string GetText(By by, string description = defaultDesc)
+        {
+            IWebElement element = WaitForElementToBeVisible(by);
+            string txt = element.Text;
+            Log($"Get text from {description}");
+            return txt;
+        }
+
+        public void SendKeys(By by, string text, string description = defaultDesc)
         {
             IWebElement element = null;
             try
@@ -56,6 +66,23 @@ namespace GitHub.config
             var wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(timeoutInSeconds));
             return wait.Until(ExpectedConditions.ElementIsVisible(by));
         }
+        
+        public void WaitForTextToBePresentInElement(By by, string text, double timeoutInSeconds = DefaultTimeout)
+        {
+            string[] tests = { text };
+            WaitForElementToContainAnyText(by, tests, timeoutInSeconds);
+        }
+
+        public void WaitForElementToContainAnyText(By by, string[] texts, double timeoutInSeconds = DefaultTimeout)
+        {
+            var element = WaitForElementToBeVisible(by);
+            var wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(timeoutInSeconds));
+            var condition = new Func<IWebDriver, bool>((driver) =>
+            {
+                return texts.Any(text => ExpectedConditions.TextToBePresentInElement(element, text)(driver));
+            });
+            wait.Until(condition);
+        }
 
         public IWebElement WaitForElementToBeClickable(IWebElement element, double timeoutInSeconds = DefaultTimeout)
         {
@@ -67,7 +94,7 @@ namespace GitHub.config
         {
             return WaitForElementToBeClickable(FindElement(by), timeoutInSeconds);
         }
-        
+
         public bool IsElementVisible(By by, double timeoutInSeconds = DefaultTimeout)
         {
             try
@@ -90,6 +117,14 @@ namespace GitHub.config
         {
             var wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(timeoutInSeconds));
             return wait.Until(ExpectedConditions.VisibilityOfAllElementsLocatedBy(by));
+        }
+
+        public void ScrollToElement(By by)
+        {
+            IWebElement element = FindElement(by);
+
+            IJavaScriptExecutor js = (IJavaScriptExecutor)Driver;
+            js.ExecuteScript("arguments[0].scrollIntoView(true);", element);
         }
 
         public void ClickOnOptionUsingEnum(ReadOnlyCollection<IWebElement> listOfOptions, Enum option)
