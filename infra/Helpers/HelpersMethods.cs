@@ -35,7 +35,6 @@ namespace infra.Helpers
         }
 
         /// <summary>
-        /// Method <c>GetTimestamp</c>
         /// Gets the current timestamp formatted as "dd.MM.yyyy HH mm ss.fff" using the invariant culture.
         /// (This format is valid for folder naming)
         /// </summary>
