@@ -11,10 +11,9 @@ namespace infra.Tests
         [Test]
         public void FirstTest()
         {
-            TestPage testPage = new TestPage(driver);
+            TestPage testPage = new TestPage(driver, logger);
             testPage.GoToSignIn();
             //Thread.Sleep(10000);
         }
-
     }
 }

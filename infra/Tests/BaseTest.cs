@@ -53,6 +53,7 @@ namespace infra.Tests
         {
             driver.Quit();
             logger.EndTest(TestContext.CurrentContext.Test.Name);
+            ExtentReportsLogger.FlushExtentReports();
         }
     }
 }

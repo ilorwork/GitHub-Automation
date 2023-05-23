@@ -3,21 +3,22 @@ using OpenQA.Selenium;
 using SeleniumExtras.WaitHelpers;
 using System.Collections.ObjectModel;
 using infra.Helpers;
-using infra.Loggers;
 
 public class ActionBot
 {
-    private static ILogger logger = LoggerFactory.CreateLogger();
-    private static void Log(string info) => logger.LogInfo(info);
+    private ILogger logger;
+    private void Log(string info) => logger.LogInfo(info);
+
     private const double DefaultTimeout = 30;
     private const string defaultDesc = "Unspecified element";
     private IWebDriver driver;
     private WebDriverWait wait;
 
-    public ActionBot(IWebDriver driver, WebDriverWait wait)
+    public ActionBot(IWebDriver driver, WebDriverWait wait, ILogger logger)
     {
         this.driver = driver;
         this.wait = wait;
+        this.logger = logger;
     }
 
 

@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System.Globalization;
+using System.Reflection;
 using DescriptionAttribute = System.ComponentModel.DescriptionAttribute;
 
 namespace infra.Helpers
@@ -31,6 +32,18 @@ namespace infra.Helpers
                 directory = directory.Parent;
             }
             return directory.ToString();
+        }
+
+        /// <summary>
+        /// Method <c>GetTimestamp</c>
+        /// Gets the current timestamp formatted as "dd.MM.yyyy HH mm ss.fff" using the invariant culture.
+        /// (This format is valid for folder naming)
+        /// </summary>
+        /// <returns>A string representing the current timestamp.</returns>
+        public static string GetTimestamp()
+        {
+            string timestamp = DateTime.Now.ToString("dd.MM.yyyy HH mm ss.fff", CultureInfo.InvariantCulture);
+            return timestamp;
         }
     }
 }

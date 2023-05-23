@@ -10,7 +10,7 @@ namespace infra.PageObjects
         private readonly By passwordField;
         private readonly By signInBtn;
 
-        public TestPage(IWebDriver driver) : base(driver)
+        public TestPage(IWebDriver driver, ILogger logger) : base(driver, logger)
         {
             goToSignInBtn = By.CssSelector("[href=\"/login\"]");
             userNameField = By.Id("login_field");

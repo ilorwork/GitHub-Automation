@@ -6,7 +6,7 @@ namespace infra.Loggers
     {
         public static ILogger CreateLogger()
         {
-            string logger = TestContext.Parameters.Get("Logger");
+            string logger = TestContext.Parameters.Get("Logger", "");
 
             switch (logger.ToLower())
             {

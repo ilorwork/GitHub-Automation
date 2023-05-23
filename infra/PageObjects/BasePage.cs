@@ -10,11 +10,11 @@ namespace infra.PageObjects
         protected WebDriverWait wait;
         protected ActionBot Bot;
 
-        public BasePage(IWebDriver driver)
+        public BasePage(IWebDriver driver, ILogger logger)
         {
             this.driver = driver;
             wait = new WebDriverWait(driver, TimeSpan.FromSeconds(30));
-            Bot = new ActionBot(driver, wait);
+            Bot = new ActionBot(driver, wait, logger);
         }
     }
 }
