@@ -118,8 +118,8 @@ public class ActionBot
 
     public IWebElement FindElement(By by)
     {
-        return wait.Until(drv => drv.FindElement(by));
-        //return WaitForElementToBeVisible(by);
+        //return wait.Until(drv => drv.FindElement(by));
+        return WaitForElementToBeVisible(by);
     }
 
     public ReadOnlyCollection<IWebElement> FindElements(By by, double timeoutInSeconds = DefaultTimeout)
@@ -139,9 +139,9 @@ public class ActionBot
     public void ClickOnOptionUsingEnum(ReadOnlyCollection<IWebElement> listOfOptions, Enum option)
     {
         bool elementFound = default;
+        var enumOptionDescription = HelpersMethods.GetEnumDescriptionFromValue(option);
         foreach (var webElement in listOfOptions)
         {
-            var enumOptionDescription = HelpersMethods.GetEnumDescriptionFromValue(option);
             if (!webElement.Text.Equals(enumOptionDescription)) continue;
             Click(webElement, enumOptionDescription);
             elementFound = true;

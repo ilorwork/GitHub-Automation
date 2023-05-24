@@ -1,4 +1,4 @@
-﻿namespace GitHub.helpers
+﻿namespace GitHubAutomation
 {
     internal static class Categories
     {

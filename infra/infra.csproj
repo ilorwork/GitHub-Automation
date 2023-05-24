@@ -6,6 +6,7 @@
     <Nullable>enable</Nullable>
 
     <IsPackable>false</IsPackable>
+	  <RunSettingsFilePath>infra\settingsFile.RunSettings</RunSettingsFilePath>
   </PropertyGroup>
 
   <ItemGroup>
