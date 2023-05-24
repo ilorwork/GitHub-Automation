@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
 
     <IsPackable>false</IsPackable>
-	  <RunSettingsFilePath>infra\settingsFile.RunSettings</RunSettingsFilePath>
+	  <RunSettingsFilePath>infra\UnitTests\Settings\unitTestingSettings.RunSettings</RunSettingsFilePath>
   </PropertyGroup>
 
   <ItemGroup>
