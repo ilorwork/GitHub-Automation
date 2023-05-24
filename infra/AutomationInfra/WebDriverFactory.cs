@@ -7,7 +7,7 @@ using OpenQA.Selenium.Remote;
 using WebDriverManager;
 using WebDriverManager.DriverConfigs.Impl;
 
-namespace infra.Tests
+namespace infra.AutomationInfra
 {
     public class WebDriverFactory
     {

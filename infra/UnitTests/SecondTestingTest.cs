@@ -1,8 +1,9 @@
 ﻿// SecondTestingTest.cs (Example test class)
-using infra.PageObjects;
+using infra.AutomationInfra;
+using infra.UnitTests.TestPages;
 using NUnit.Framework;
 
-namespace infra.Tests
+namespace infra.UnitTests
 {
     [TestFixture]
     [Parallelizable]

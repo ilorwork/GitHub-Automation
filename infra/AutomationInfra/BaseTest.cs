@@ -5,7 +5,7 @@ using OpenQA.Selenium;
 using System.Diagnostics;
 using System.Drawing;
 
-namespace infra.Tests
+namespace infra.AutomationInfra
 {
     public class BaseTest
     {

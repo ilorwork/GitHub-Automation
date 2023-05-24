@@ -1,5 +1,4 @@
-﻿using infra.PageObjects;
-using OpenQA.Selenium;
+﻿using infra.AutomationInfra;
 
 namespace GitHubAutomation.Pages
 {

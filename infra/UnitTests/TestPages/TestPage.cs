@@ -1,7 +1,8 @@
 ﻿// TestPage.cs (Example page object)
+using infra.AutomationInfra;
 using OpenQA.Selenium;
 
-namespace infra.PageObjects
+namespace infra.UnitTests.TestPages
 {
     internal class TestPage : BasePage
     {

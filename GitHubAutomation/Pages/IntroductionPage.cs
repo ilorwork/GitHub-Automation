@@ -1,6 +1,4 @@
-﻿using OpenQA.Selenium;
-
-namespace GitHubAutomation.Pages
+﻿namespace GitHubAutomation.Pages
 {
     internal class IntroductionPage : GitHubPage
     {

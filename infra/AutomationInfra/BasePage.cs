@@ -2,7 +2,7 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 
-namespace infra.PageObjects
+namespace infra.AutomationInfra
 {
     public abstract class BasePage
     {

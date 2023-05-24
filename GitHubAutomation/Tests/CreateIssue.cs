@@ -1,13 +1,12 @@
 ﻿using GitHubAutomation.Pages;
+using infra.AutomationInfra;
 using infra.Helpers;
-using infra.Tests;
 
 namespace GitHubAutomation.Tests
 {
     [Parallelizable]
     internal class CreateIssue : BaseTest
     {
-        //[Ignore("Needs an update")]
         [Test]
         [Category(Categories.Issue), Category(Categories.SanityTest), Category(Categories.RegressionTest)]
         //TODO: optional bug - rep name already exist. (Delete reps/check is exist/check for exception)

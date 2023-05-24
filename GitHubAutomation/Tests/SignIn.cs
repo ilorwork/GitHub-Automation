@@ -1,5 +1,5 @@
 ﻿using GitHubAutomation.Pages;
-using infra.Tests;
+using infra.AutomationInfra;
 
 namespace GitHubAutomation.Tests
 {

@@ -1,7 +1,4 @@
-﻿using System;
-using System.ComponentModel;
-using OpenQA.Selenium;
-using DescriptionAttribute = System.ComponentModel.DescriptionAttribute;
+﻿using DescriptionAttribute = System.ComponentModel.DescriptionAttribute;
 
 namespace GitHubAutomation.Pages
 {
