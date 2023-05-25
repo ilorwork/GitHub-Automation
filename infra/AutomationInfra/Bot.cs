@@ -7,17 +7,13 @@ using infra.Helpers;
 public class ActionBot
 {
     private ILogger logger;
-    private void Log(string info) => logger.LogInfo(info);
-
     private const double DefaultTimeout = 30;
     private const string defaultDesc = "Unspecified element";
     private IWebDriver driver;
-    private WebDriverWait wait;
 
-    public ActionBot(IWebDriver driver, WebDriverWait wait, ILogger logger)
+    public ActionBot(IWebDriver driver, ILogger logger)
     {
         this.driver = driver;
-        this.wait = wait;
         this.logger = logger;
     }
 
@@ -31,47 +27,79 @@ public class ActionBot
     {
         try
         {
-            element = WaitForElementToBeClickable(element);
-            element.Click();
-            Log($"Click on {description}");
+            var clickableElement = WaitForElementToBeClickable(element);
+            clickableElement.Click();
+            logger.LogInfo($"Click on {description}");
         }
-        catch (Exception e)
+        catch (Exception ex)
         {
-            Console.WriteLine("{0} Exception caught.", e);
-            Log($"Click on {description} has failed: {e}");
-            throw new Exception("Click element: " + element + " has failed! exception: ", e);
+            logger.LogFail($"Failed to click on element: {description}: {ex}");
+            throw new InvalidOperationException($"Failed to click on element: {description}", ex);
         }
     }
 
     public string GetText(By by, string description = defaultDesc)
     {
-        IWebElement element = WaitForElementToBeVisible(by);
-        string txt = element.Text;
-        Log($"Get text from {description}");
-        return txt;
+        try
+        {
+            var element = WaitForElementToBeVisible(by);
+            var txt = element.Text;
+            logger.LogInfo($"Get text from {description}");
+            return txt;
+        }
+        catch (Exception ex)
+        {
+            logger.LogFail($"Failed to get text from: '{description}': {ex}");
+            throw new InvalidOperationException($"Failed to get text from: '{description}'", ex);
+        }
     }
 
     public void SendKeys(By by, string text, string description = defaultDesc, bool clearFirst = true)
     {
-        IWebElement? element = null;
         try
         {
-            element = FindElement(by);
+            var element = FindElement(by);
             Click(element, description);
             if (clearFirst) element.Clear();
             element.SendKeys(text);
-            Log($"Send: {text} To: {description}");
+            logger.LogInfo($"Send: {text} To: {description}");
         }
-        catch (Exception e)
+        catch (InvalidElementStateException ex)
         {
-            Console.WriteLine("{0} Exception caught.", e);
-            Log($"Send-Keys to: {description} has failed: {e}");
-            throw new Exception("Send keys to element: " + element + " has failed! exception: ", e);
+            logger.LogFail($"Failed to send keys '{text}' to: {description}: {ex}");
+            throw;
+        }
+        catch (Exception ex)
+        {
+            logger.LogFail($"Send-Keys '{text}' to: {description} has failed: {ex}");
+            throw new InvalidOperationException($"Failed to send keys to: {description}", ex);
+        }
+    }
+    
+    public string GetCssValue(By by, string cssValueToGet, string description = defaultDesc)
+    {
+        try
+        {
+            var element = FindElement(by);
+            Click(element, description);
+            var cssValue = element.GetCssValue(cssValueToGet);
+            if (string.IsNullOrEmpty(cssValue))
+            {
+                throw new NotFoundException($"CSS value: '{cssValueToGet}' does not exist or is not set for element: {description}");
+            }
+            logger.LogInfo($"Got CSS value: '{cssValueToGet}' From: {description}");
+            return cssValue;
+        }
+        catch (NotFoundException ex)
+        {
+            logger.LogFail($"Failed to get CSS value: '{cssValueToGet}' of: {description}. {ex}");
+            throw;
         }
     }
 
     public IWebElement WaitForElementToBeVisible(By by, double timeoutInSeconds = DefaultTimeout)
     {
+        var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(timeoutInSeconds));
         return wait.Until(ExpectedConditions.ElementIsVisible(by));
     }
 
@@ -130,7 +158,7 @@ public class ActionBot
 
     public void ScrollToElement(By by)
     {
-        IWebElement element = FindElement(by);
+        var element = FindElement(by);
 
         IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
         js.ExecuteScript("arguments[0].scrollIntoView(true);", element);
@@ -149,7 +177,7 @@ public class ActionBot
         }
         if (!elementFound)
         {
-            throw new Exception("Could not find any element to click on!");
+            throw new NotFoundException("Unable to click on element, element not found");
         }
     }
 }

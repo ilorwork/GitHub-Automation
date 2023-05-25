@@ -21,8 +21,9 @@ namespace infra.UnitTests.TestPages
 
         public void GoToSignIn()
         {
-            Bot.Click(goToSignInBtn);
+            Bot.Click(goToSignInBtn, nameof(goToSignInBtn));
         }
+
         public void SignIn(string userName, string password)
         {
             EnterUsername(userName);
