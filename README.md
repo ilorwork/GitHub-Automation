@@ -39,25 +39,25 @@ the AutomationSettings.RunSetting file which can be found inside "infra" project
 ### Parameters
 
 - **Browser**
-  - Values: [`"Chrome", "Firefox", "GridChrome", "GridFirefox"`].
+  - Allowed Values: [`"Chrome", "Firefox", "GridChrome", "GridFirefox"`].
   - Default value = `"Chrome"`
   - Description: Specify the wanted browser.
 - **SiteUrl**
   - Value: [`"https://github.com"`].
   - Description: The url for your site, for this project it's set to github site.
-  - **GridUrl**
+- **GridUrl**
   - Value: [`"http://<remote_server_ip>:<port>/wd/hub"`].
   - Description: The url of your selenium grid.
-  - **Logger**
-  - Values: [`"LocalFile", "ExtentReports"`].
+- **Logger**
+  - Allowed Values: [`"LocalFile", "ExtentReports"`].
   - Default value = `"ExtentReports"`
   - Description: The logger you want to use, there are two supported loggers LocalFile, and ExtentReports.
-  - **width**
-  - Value: [`int >= 0`].
+- **width**
+  - Allowed Values: [`int >= 0`].
   - Default value = `0`
   - Description: The width of the browser window.(for max size width enter 0 or don't specify)
-  - **height**
-  - Value: [`int >= 0`].
+- **height**
+  - Allowed Values: [`int >= 0`].
   - Default value = `0`
   - Description: The height of the browser window.(for max size width enter 0 or don't specify)
 
