@@ -1,45 +1,70 @@
 # GitHub-Automation
 
- ## Summary
-C# Automation project for GitHub.com: 
+## Summary
+
+C# Automation project for GitHub.com:
 Simulates basic new-user operations such as - creating a repository, creating a project, etc.
 
 ## Main technologies
+
 This project leverage the following main technologies:
-* C#/.Net Core 3.1
-* NUnit 3
-* Selenium WebDriver
-* POM design pattern
+
+- C#/.Net 6
+- NUnit 3
+- Selenium WebDriver 4 & Selenium Grid
+- POM design pattern
+- Extent-Reports
 
 ## Modes of operation
-* Local (Visual Studio) - details in the configuration section below.
-* Web (Desktop)
-* Filter by categories
-* Parallel execution
-* retry on test failure - details in the configuration section below.
+
+- Local browsers (Chrome & FF)
+- Remote - Selenium Grid (Chrome & FF)
+- Filter by categories
+- Parallel execution
 
 ## ⚙️Setup
-* [Download .NET](https://dotnet.microsoft.com/en-us/download)
-* Open terminal and run dotnet --info to ensure installation.
-* git clone https://github.com/ilorwork/GitHub-Automation.git
-* Download an IDE of your choice. Probably Visual Studio, or VS Code.
+
+- [Download .NET](https://dotnet.microsoft.com/en-us/download)
+- Open terminal and run dotnet --info to ensure installation.
+- git clone https://github.com/ilorwork/GitHub-Automation.git
+- Download and install [Visual Studio](https://visualstudio.microsoft.com/downloads/)
 
 ## Configuration
+
 The different modes of operation are controlled via [Nunit Test Parameters](https://docs.nunit.org/articles/nunit/writing-tests/TestContext.html#testparameters)
 
-When running from Visual Studio, the most common way to configure these parameters are through a [.runsettings file](https://docs.microsoft.com/en-us/visualstudio/test/configure-unit-tests-by-using-a-dot-runsettings-file?view=vs-2019). For most of what you'll need, you can use *Local.RunSettings*. In order to use it, select from the top menu in Visual Studio: **Test->Configure Run Settings->Select Solution Wide runsettigns File** and browser for the *Local.Runsettings* file in the root folder of the solution, as described [here](https://docs.microsoft.com/en-us/visualstudio/test/configure-unit-tests-by-using-a-dot-runsettings-file?view=vs-2019#manually-select-the-run-settings-file).
+The configuration is being set using
+the AutomationSettings.RunSetting file which can be found inside "infra" project.
 
 ### Parameters
 
-* **local**
-  * Values: [`"true"`, `"false"`]. Default = `"true"`
-  * Description: true to create a local log, and false to avoid the local log.
-* **retries(not supported from the 'runsettings' anymore, only from inside the 'AutomationConfig.cs')**
-  * Values: [whole number starts from `"1"`]. Default = `"1"`
-  * Description: The times to retry test case on failure only.
+- **Browser**
+  - Values: [`"Chrome", "Firefox", "GridChrome", "GridFirefox"`].
+  - Default value = `"Chrome"`
+  - Description: Specify the wanted browser.
+- **SiteUrl**
+  - Value: [`"https://github.com"`].
+  - Description: The url for your site, for this project it's set to github site.
+  - **GridUrl**
+  - Value: [`"http://<remote_server_ip>:<port>/wd/hub"`].
+  - Description: The url of your selenium grid.
+  - **Logger**
+  - Values: [`"LocalFile", "ExtentReports"`].
+  - Default value = `"ExtentReports"`
+  - Description: The logger you want to use, there are two supported loggers LocalFile, and ExtentReports.
+  - **width**
+  - Value: [`int >= 0`].
+  - Default value = `0`
+  - Description: The width of the browser window.(for max size width enter 0 or don't specify)
+  - **height**
+  - Value: [`int >= 0`].
+  - Default value = `0`
+  - Description: The height of the browser window.(for max size width enter 0 or don't specify)
 
-## Running tests
-* Run tests of GitHub.csproj using [dotnet CLI](https://docs.microsoft.com/en-us/dotnet/core/tools/)
+## Test execution
+
+- Execute GitHub.csproj tests via [dotnet CLI](https://docs.microsoft.com/en-us/dotnet/core/tools/)
+
 ```
 cd GitHub-Automation\GitHubProjectFolder\
 # run all tests
@@ -47,4 +72,5 @@ dotnet test
 # run tests by categories
 dotnet test --filter "Category=<Category_name>"
 ```
+
 For more info about [dotnet filter command](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-test#filter-option-details)
