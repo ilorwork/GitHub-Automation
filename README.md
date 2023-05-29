@@ -87,6 +87,6 @@ refer to the [dotnet CLI documentation](https://docs.microsoft.com/en-us/dotnet/
 - [Selenium WebDriver Documentation](https://www.selenium.dev/documentation/en/)
 - [NUnit Documentation](https://docs.nunit.org/)
 - [Page Object Model Pattern](https://www.selenium.dev/documentation/en/guidelines_and_recommendations/page_object_models/)
-- [Extent Reports Documentation](https://extentreports.com/docs/)
+- [Extent Reports Documentation](https://www.extentreports.com/docs/versions/5/net/index.html)
 
 Feel free to explore the provided resources to learn more about the technologies and patterns used in this project.
