@@ -21,4 +21,13 @@
     <PackageReference Include="WebDriverManager" Version="2.16.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="AutomationSettings.RunSettings">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="UnitTests\Settings\unitTestingSettings.RunSettings">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
