@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
 
     <IsPackable>false</IsPackable>
-	  <RunSettingsFilePath>infra\UnitTests\Settings\unitTestingSettings.RunSettings</RunSettingsFilePath>
+	  <RunSettingsFilePath>GitHubAutomation\bin\Debug\net6.0\UnitTests\Settings\unitTestingSettings.RunSettings</RunSettingsFilePath>
   </PropertyGroup>
 
   <ItemGroup>
@@ -19,15 +19,6 @@
     <PackageReference Include="Selenium.WebDriver" Version="4.9.1" />
     <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="113.0.5672.6300" />
     <PackageReference Include="WebDriverManager" Version="2.16.2" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="AutomationSettings.RunSettings">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="UnitTests\Settings\unitTestingSettings.RunSettings">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
 
 </Project>
