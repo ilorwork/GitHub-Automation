@@ -21,7 +21,7 @@ pipeline {
 
         stage("Build") {
             steps {
-                sh "dotnet build ${pathToProject} --configuration Debug"
+                sh "dotnet build"
             }
         }
 
