@@ -1,0 +1,41 @@
+buildNumber = "${currentBuild.number}"
+pathToProject = "C:/jenkins/workspace/${env.JOB_NAME}/GitHubAutomation/GitHubAutomation.csproj"
+ 
+pipeline {
+    agent any
+
+    stages {
+   
+        stage("Git Clone") {
+            steps {
+                git 'https://github.com/ilorwork/GitHub-Automation.git'
+            }
+        }
+   
+        stage("Restore Dependencies") {
+            steps {
+                sh 'dotnet restore'
+            }
+        }
+        
+
+        stage("Build") {
+            steps {
+                sh "dotnet build ${pathToProject} --configuration Debug"
+            }
+        }
+
+        stage("Tests Execution") {
+            steps {
+                dotnet test
+            }
+        }
+ 
+        stage("Publish Test Report") {
+            steps {
+                archiveArtifacts artifacts: '**/*.trx'
+                mstest testResultsFile:"**/*.trx", keepLongStdio: true
+            }
+        }
+    }
+}
