@@ -8,7 +8,7 @@ pipeline {
    
         stage("Git Clone") {
             steps {
-                git 'https://github.com/ilorwork/GitHub-Automation.git'
+                git branch: 'jenkinsTesting', url: 'https://github.com/ilorwork/GitHub-Automation.git'
             }
         }
    
