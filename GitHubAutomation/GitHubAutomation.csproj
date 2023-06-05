@@ -7,7 +7,6 @@
 
     <IsPackable>false</IsPackable>
     <IsTestProject>true</IsTestProject>
-	  <RunSettingsFilePath>infra\AutomationSettings.RunSettings</RunSettingsFilePath>
   </PropertyGroup>
 
   <ItemGroup>
