@@ -24,7 +24,7 @@ namespace infra.AutomationInfra
                 WebDriverFactory webDriverFactory = new WebDriverFactory();
                 driver = webDriverFactory.GetDriver();
 
-                string siteUrl = TestContext.Parameters.Get("SiteUrl");
+                string siteUrl = TestContext.Parameters.Get("SiteUrl", "https://github.com");
                 driver.Navigate().GoToUrl(siteUrl);
 
                 int width = int.Parse(TestContext.Parameters.Get("width", "0"));
