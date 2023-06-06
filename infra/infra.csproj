@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
 
     <IsPackable>false</IsPackable>
-	  <RunSettingsFilePath>GitHubAutomation\bin\Debug\net6.0\UnitTests\Settings\unitTestingSettings.RunSettings</RunSettingsFilePath>
+	  <RunSettingsFilePath>infra\UnitTests\Settings\unitTestingSettings.RunSettings</RunSettingsFilePath>
   </PropertyGroup>
 
   <ItemGroup>
