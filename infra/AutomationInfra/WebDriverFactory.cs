@@ -6,6 +6,7 @@ using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Remote;
 using WebDriverManager;
 using WebDriverManager.DriverConfigs.Impl;
+using WebDriverManager.Helpers;
 
 namespace infra.AutomationInfra
 {
@@ -18,11 +19,11 @@ namespace infra.AutomationInfra
             switch (browser.ToLower())
             {
                 case "firefox":
-                    new DriverManager().SetUpDriver(new FirefoxConfig());
+                    new DriverManager().SetUpDriver(new FirefoxConfig(), VersionResolveStrategy.MatchingBrowser);
                     return new FirefoxDriver();
 
                 case "chrome":
-                    new DriverManager().SetUpDriver(new ChromeConfig());
+                    new DriverManager().SetUpDriver(new ChromeConfig(), VersionResolveStrategy.MatchingBrowser);
                     return new ChromeDriver();
 
                 case "gridchrome":

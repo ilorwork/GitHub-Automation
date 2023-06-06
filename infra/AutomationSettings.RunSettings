@@ -3,7 +3,7 @@
 <RunSettings>
 	<!-- Parameters used by tests at runtime -->
 	<TestRunParameters>
-		<Parameter name="Browser" value="firefox" />	<!--Chrome, Firefox, GridChrome, GridFirefox-->
+		<Parameter name="Browser" value="chrome" />	<!--Chrome, Firefox, GridChrome, GridFirefox-->
 		<Parameter name="SiteUrl" value="https://github.com" />	<!--https://yourWebSite.com-->
 		<Parameter name="GridUrl" value="http://10.0.0.12:4444" />	<!--http://<remote_server_ip>:<port>/wd/hub-->
 		<Parameter name="Logger" value="ExtentReports" /> <!--LocalFile, ExtentReports-->
