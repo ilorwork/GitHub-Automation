@@ -3,13 +3,13 @@
 <RunSettings>
 	<!-- Parameters used by tests at runtime -->
 	<TestRunParameters>
-		<Parameter name="Browser" value="firefox" />	<!--Chrome, Firefox, GridChrome, GridFirefox-->
+		<Parameter name="Browser" value="chrome" />	<!--Chrome, Firefox, GridChrome, GridFirefox-->
 		<Parameter name="SiteUrl" value="https://github.com" />	<!--https://yourWebSite.com-->
 		<Parameter name="GridUrl" value="http://10.0.0.12:4444" />	<!--http://<remote_server_ip>:<port>/wd/hub-->
 		<Parameter name="Logger" value="ExtentReports" /> <!--LocalFile, ExtentReports-->
 		
 		<!--Window size parameters-->
-		<Parameter name="width" value="0" />	<!--Enter an int, for max width enter 0-->
-		<Parameter name="height" value="585" />	<!--Enter an int, for max height enter 0-->
+		<Parameter name="width" value="0" />	<!--Enter a number, for max width enter 0-->
+		<Parameter name="height" value="585" />	<!--Enter a number, for max height enter 0-->
 	</TestRunParameters>
 </RunSettings>
